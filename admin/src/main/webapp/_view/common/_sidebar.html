@@ -1,0 +1,51 @@
+#@layout()
+#define sidebar()
+    #for(menu : menus)
+        #if(menu.size == 0)
+            <li>
+                <a class="J_menuItem" href="#(ctx)/#(menu.pageurl)">
+                    <i class="fa #(menu.icon ??)"></i>
+                    <span class="nav-label">#(menu.name)</span>
+                </a>
+            </li>
+        #else
+            <li>
+                <a href="#(ctx)/#(menu.pageurl ??)">
+                    <i class="fa #(menu.icon ?? )"></i>
+                    <span class="nav-label">#(menu.name)</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    #for(tree : menu.treeMenus)
+                        #if(tree.size == 0)
+                            <li>
+                                <a class="J_menuItem" href="#(ctx)/#(tree.pageurl ??)">
+                                    <i class="fa #(tree.icon)"></i>
+                                    <span class="nav-label">#(tree.name)</span>
+                                </a>
+                            </li>
+                        #else
+                            <li>
+                                <a href="#(tree.pageurl)">
+                                    <i class="fa #(tree.icon)"></i>
+                                    <span class="nav-label">#(tree.name)</span>
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-third-level">
+                                    #for(treeThird : tree.treeMenus)
+                                    <li>
+                                        <a class="J_menuItem" href="#(ctx)/#(treeThird.pageurl)" data-id="#(treeThird.id)">
+                                            <i class="fa #(treeThird.icon)"></i>
+                                            <span class="nav-label">#(treeThird.name)</span>
+                                        </a>
+                                    </li>
+                                    #end
+                                </ul>
+                            </li>
+                        #end
+                    #end
+                </ul>
+            </li>
+        #end
+    #end
+#end
