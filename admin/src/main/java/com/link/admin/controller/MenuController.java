@@ -9,8 +9,8 @@ import com.link.common.util.JqGrid;
 import com.link.common.util.ResultJson;
 import com.link.core.MenuServiceImpl;
 import com.link.core.RoleServiceImpl;
-import com.link.model.TMenu;
-import com.link.model.TRole;
+import com.link.model.Menu;
+import com.link.model.Role;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +37,7 @@ public class MenuController extends Controller {
      * @data: 2017-05-25 22:29
     */
     public void dataGrid(){
-        TMenu model = getModel(TMenu.class,"",true);
+        Menu model = getModel(Menu.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         DataGrid dataGrid = menuService.dataGrid(jqGrid,model,"t_menu");
         renderJson(menuService.treeDataGrid(jqGrid,model,"t_menu"));
@@ -49,7 +49,7 @@ public class MenuController extends Controller {
      * @data: 2017-06-02 11:23
     */
     public void saveOrUpdate(){
-        TMenu model = getModel(TMenu.class,"",true);
+        Menu model = getModel(Menu.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         renderJson(menuService.saveOrUpdate(model,model.getId(),"t_menu",jqGrid));
     }
@@ -61,8 +61,8 @@ public class MenuController extends Controller {
     */
     public void assignMenu(){
         String roleId = getPara("roleId");
-        TRole role = roleService.findRoleById(roleId);
-        List<TMenu> list = menuService.findMenu();
+        Role role = roleService.findRoleById(roleId);
+        List<Menu> list = menuService.findMenu();
         List<String> roleMenus = menuService.findRoleMenus(roleId);
         setAttr("role",role);
         setAttr("list",list);
@@ -83,7 +83,7 @@ public class MenuController extends Controller {
     }
 
     public void add(){
-        TMenu menu = getModel(TMenu.class,"menu");
+        Menu menu = getModel(Menu.class,"menu");
         menu.setId(UUID.randomUUID().toString().replace("-",""));
         LogKit.info(menu.toString());
         boolean result = menuService.save(menu);
@@ -103,7 +103,7 @@ public class MenuController extends Controller {
 
     public void delete(){
         String id = getPara("id");
-        TMenu menu = new TMenu();
+        Menu menu = new Menu();
         menu.setId(id);
         boolean result = menuService.delete(menu);
         ResultJson resultJson = new ResultJson();

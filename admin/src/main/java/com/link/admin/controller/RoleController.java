@@ -9,8 +9,8 @@ import com.link.common.util.JqGrid;
 import com.link.common.util.ResultJson;
 import com.link.core.RoleServiceImpl;
 import com.link.core.UserServiceImpl;
-import com.link.model.TRole;
-import com.link.model.TUser;
+import com.link.model.Role;
+import com.link.model.User;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -37,7 +37,7 @@ public class RoleController extends Controller {
      * @data: 2017-05-25 22:29
      */
     public void dataGrid(){
-        TRole model = getModel(TRole.class,"",true);
+        Role model = getModel(Role.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         renderJson(roleService.dataGrid(jqGrid,model,"t_role"));
     }
@@ -48,7 +48,7 @@ public class RoleController extends Controller {
      * @data: 2017-06-02 11:23
      */
     public void saveOrUpdate(){
-        TRole model = getModel(TRole.class,"",true);
+        Role model = getModel(Role.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         if (jqGrid.getOper().equals(Constant.ADD)){
             model.setCreatedAt(DateKit.toStr(new Date(),DateKit.timeFormat));
@@ -67,8 +67,8 @@ public class RoleController extends Controller {
     */
     public void assign_role(){
         String userId = getPara("userId");
-        TUser user = userService.getUser(userId);
-        List<TRole> list = roleService.findRole();
+        User user = userService.getUser(userId);
+        List<Role> list = roleService.findRole();
         List<String> listUserRole = roleService.findUserRole(userId);
         setAttr("user",user);
         setAttr("list",list);

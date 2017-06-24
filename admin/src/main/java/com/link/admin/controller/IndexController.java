@@ -14,8 +14,8 @@ import com.link.common.util.Constant;
 import com.link.common.util.ResultJson;
 import com.link.core.MenuServiceImpl;
 import com.link.core.UserServiceImpl;
-import com.link.model.TMenu;
-import com.link.model.TUser;
+import com.link.model.Menu;
+import com.link.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.DisabledAccountException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -35,8 +35,8 @@ public class IndexController extends Controller{
         if (getPara() != null){
             renderError(404);
         }else if (ShiroKit.isAuthenticated()){
-            TUser user = getSessionAttr("user");
-            List<TMenu> list = menuService.sidebar(user.getId(),null);
+            User user = getSessionAttr("user");
+            List<Menu> list = menuService.sidebar(user.getId(),null);
             TreeMenu treeMenu = new TreeMenu(list);
             List<TreeMenu> treeMenuList = treeMenu.buildTree();
             setAttr("menus",treeMenuList);
@@ -93,7 +93,7 @@ public class IndexController extends Controller{
                 return;
             }
 
-            TUser user = userService.getUserByUserName(userName);
+            User user = userService.getUserByUserName(userName);
             setSessionAttr("user",user);
             resultJson.setMsg("登录成功！");
             resultJson.setStatus(Constant.RESULT_SUCCESS);
@@ -101,7 +101,7 @@ public class IndexController extends Controller{
             return;
         }else {
             LogKit.info("当前session信息："+ ShiroKit.getSession().getHost());
-            LogKit.info("当前session用户信息："+((TUser)ShiroKit.getSession().getAttribute("user")).getUsername());
+            LogKit.info("当前session用户信息："+((User)ShiroKit.getSession().getAttribute("user")).getUsername());
             render("/");
         }
     }

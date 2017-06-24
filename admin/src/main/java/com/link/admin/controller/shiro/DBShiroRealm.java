@@ -1,8 +1,6 @@
 package com.link.admin.controller.shiro;
 
-import com.link.model.TPermission;
-import com.link.model.TRole;
-import com.link.model.TUser;
+import com.link.model.*;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -22,26 +20,26 @@ public class DBShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        TUser user = (TUser) principalCollection.getPrimaryPrincipal();
+        User user = (User) principalCollection.getPrimaryPrincipal();
         //String username = ((TUser)principalCollection.fromRealm(getName()).iterator().next()).getUsername();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         //TUser user = TUser.dao.findFirst("select * from t_user t where t.username = ? and t.delete_at is null",username);
         if (user != null){
             SimpleAuthorizationInfo authorinfo = new SimpleAuthorizationInfo();
             //遍历角色
-            List<TRole> roles = null;
+            List<Role> roles = null;
             String sql = "SELECT t.* FROM t_role t inner join t_user_role r on r.role_id = t.id where r.user_id = ?";
-            roles = (List<TRole>) TRole.dao.findFirst(sql,user.getId());
+            roles = (List<Role>) Role.dao.findFirst(sql,user.getId());
             List<String> roleNames = null; //角色集合
             List<String> permissionsUrls = null; //权限集合
             if(roles != null && roles.size() > 0){
-                for (TRole role: roles){
+                for (Role role: roles){
                     roleNames.add(role.getName());
                     String permissionSql = "SELECT t.* FROM t_permission t inner join t_role_permission r on t.id = r.permission_id where r.role_id = ?";
-                    List<TPermission> permissions = null;
-                    permissions = (List<TPermission>) TPermission.dao.findFirst(permissionSql,role.getId());
+                    List<Permission> permissions = null;
+                    permissions = (List<Permission>) Permission.dao.findFirst(permissionSql,role.getId());
                     if (permissions != null && permissions.size() > 0){
-                        for (TPermission permission : permissions){
+                        for (Permission permission : permissions){
                             permissionsUrls.add(permission.getUrl());
                         }
                     }
@@ -69,8 +67,8 @@ public class DBShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken userToken = (UsernamePasswordToken) authenticationToken;
         String username = userToken.getUsername();
-        TUser user = null;
-        user = TUser.dao.findFirst("select * from t_user t where t.username = ?",username);
+        User user = null;
+        user = User.dao.findFirst("select * from t_user t where t.username = ?",username);
         if (user != null){
             SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user,user.getPassword(),getName());
             return info;

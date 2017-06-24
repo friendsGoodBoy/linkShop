@@ -1,7 +1,7 @@
 package com.link.api.service;
 
 import com.link.api.service.base.BaseServiceI;
-import com.link.model.TUser;
+import com.link.model.User;
 
 /**
  * Created by linkzz on 2017-05-26.
@@ -13,7 +13,7 @@ public interface UserServiceI extends BaseServiceI {
      * @author: linkzz
      * @data: 2017-05-09 10:56
      */
-    public TUser getUser(String id);
+    public User getUser(String id);
 
-    public TUser getUserByUserName(String userName);
+    public User getUserByUserName(String userName);
 }

@@ -4,7 +4,7 @@ import com.jfinal.core.Controller;
 import com.link.api.service.LogServiceI;
 import com.link.common.util.JqGrid;
 import com.link.core.LogServiceImpl;
-import com.link.model.TLog;
+import com.link.model.Log;
 
 /**
  * Created by linkzz on 2017-06-14.
@@ -27,7 +27,7 @@ public class LogController extends Controller {
      * @data: 2017-05-25 22:29
      */
     public void dataGrid(){
-        TLog model = getModel(TLog.class,"",true);
+        Log model = getModel(Log.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         renderJson(logService.dataGrid(jqGrid,model,"t_log"));
     }

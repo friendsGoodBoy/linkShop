@@ -7,8 +7,8 @@ import com.link.api.service.RoleServiceI;
 import com.link.common.util.Constant;
 import com.link.common.util.ResultJson;
 import com.link.core.base.BaseServiceImpl;
-import com.link.model.TRole;
-import com.link.model.TUserRole;
+import com.link.model.Role;
+import com.link.model.UserRole;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,22 +18,22 @@ import java.util.List;
  */
 public class RoleServiceImpl extends BaseServiceImpl implements RoleServiceI {
     @Override
-    public List<TRole> findRole() {
-        List<TRole> list = TRole.dao.find("select * from t_role t");
+    public List<Role> findRole() {
+        List<Role> list = Role.dao.find("select * from t_role t");
         return list;
     }
 
     @Override
-    public TRole findRoleById(String roleId) {
-        TRole role = TRole.dao.findById(roleId);
+    public Role findRoleById(String roleId) {
+        Role role = Role.dao.findById(roleId);
         return role;
     }
 
     @Override
     public List<String> findUserRole(String userId) {
-        List<TUserRole> listUserRole = TUserRole.dao.find("SELECT * FROM T_USER_ROLE T WHERE T.USER_ID = ?",userId);
+        List<UserRole> listUserRole = UserRole.dao.find("SELECT * FROM T_USER_ROLE T WHERE T.USER_ID = ?",userId);
         List<String> list = new ArrayList<String>();
-        for (TUserRole userRole : listUserRole){
+        for (UserRole userRole : listUserRole){
             list.add(userRole.getRoleId());
         }
         return list;
@@ -44,15 +44,15 @@ public class RoleServiceImpl extends BaseServiceImpl implements RoleServiceI {
     public ResultJson saveUserRole(String userId, List<String> roleIds) {
         ResultJson resultJson = new ResultJson();
         try {
-            List<TUserRole> listUserRole = TUserRole.dao.find("SELECT * FROM T_USER_ROLE T WHERE T.USER_ID = ?",userId);
+            List<UserRole> listUserRole = UserRole.dao.find("SELECT * FROM T_USER_ROLE T WHERE T.USER_ID = ?",userId);
             if (listUserRole != null && listUserRole.size() > 0){
-                for (TUserRole userRole : listUserRole){
+                for (UserRole userRole : listUserRole){
                     userRole.delete();
                 }
             }
             if (roleIds != null && roleIds.size() > 0){
                 for (String roleId : roleIds){
-                    TUserRole userRole = new TUserRole();
+                    UserRole userRole = new UserRole();
                     userRole.setId(StrKit.getRandomUUID());
                     userRole.setUserId(userId);
                     userRole.setRoleId(roleId);

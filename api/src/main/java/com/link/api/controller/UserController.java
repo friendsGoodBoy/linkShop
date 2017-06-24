@@ -4,7 +4,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import com.link.api.common.MessageResp;
-import com.link.model.TUser;
+import com.link.model.User;
 
 /**
  * 用户模块
@@ -55,8 +55,8 @@ public class UserController extends Controller {
      * @respBody {"code":"100000","data":{"password":"123456","username":"13811111111"},"message":"删除成功"}
      */
     public void getUserById(){
-        MessageResp<TUser> resp = new MessageResp<TUser>();
-        TUser user = new TUser();
+        MessageResp<User> resp = new MessageResp<User>();
+        User user = new User();
         user.put("username","13811111111");
         user.put("password","123456");
         resp.setData(user);
@@ -73,8 +73,8 @@ public class UserController extends Controller {
      * @respBody {"code":"100000","data":{"password":"123456","username":"13811111111"},"message":"删除成功"}
      */
     public void getUserList(){
-        MessageResp<TUser> resp = new MessageResp<TUser>();
-        TUser user = new TUser();
+        MessageResp<User> resp = new MessageResp<User>();
+        User user = new User();
         user.put("username","13811111111");
         user.put("password","123456");
         resp.setData(user);

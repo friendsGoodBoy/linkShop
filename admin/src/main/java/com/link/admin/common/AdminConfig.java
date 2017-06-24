@@ -10,7 +10,7 @@ import com.jfinal.kit.PathKit;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
-import com.jfinal.plugin.activerecord.dialect.OracleDialect;
+import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.activerecord.tx.TxByActionKeyRegex;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.druid.DruidStatViewHandler;
@@ -63,7 +63,7 @@ public class AdminConfig extends JFinalConfig {
         druidPlugin.setDriverClass(PropKit.get("driverClassName"));
         druidPlugin.addFilter(new StatFilter());
         WallFilter wallFilter = new WallFilter();
-        wallFilter.setDbType("oracle");
+        wallFilter.setDbType("mysql");
         druidPlugin.addFilter(wallFilter);
         me.add(druidPlugin);
         ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
@@ -73,7 +73,7 @@ public class AdminConfig extends JFinalConfig {
         arp.setDevMode(false);
         /*arp.setCache(new EhCache());*/
         //no table mapping 错误，缺少oracle方言,教训呀
-        arp.setDialect(new OracleDialect());
+        arp.setDialect(new MysqlDialect());
         //忽略oracle数据库字段大小写 false 是大写, true是小写, 不写是区分大小写
         arp.setContainerFactory(new CaseInsensitiveContainerFactory(true));
         //所有映射在MappingKit文件中

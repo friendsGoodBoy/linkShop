@@ -7,7 +7,7 @@ import com.link.api.service.UserServiceI;
 import com.link.common.util.Constant;
 import com.link.common.util.JqGrid;
 import com.link.core.UserServiceImpl;
-import com.link.model.TUser;
+import com.link.model.User;
 
 import java.util.Date;
 
@@ -34,7 +34,7 @@ public class UserController extends Controller {
      * @data: 2017-05-06 19:35
     */
     public void dataGrid(){
-        TUser user = getModel(TUser.class,"",true);
+        User user = getModel(User.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         renderJson(userService.dataGrid(jqGrid,user,"t_user"));
     }
@@ -45,7 +45,7 @@ public class UserController extends Controller {
      * @data: 2017-05-08 11:48
     */
     public void saveOrUpdate(){
-        TUser user = getModel(TUser.class,"",true);
+        User user = getModel(User.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         if (jqGrid.getOper().equals(Constant.ADD)){
             user.setPassword(HashKit.md5("111111"));
@@ -65,7 +65,7 @@ public class UserController extends Controller {
     */
     public void getUser(){
         String id = getPara("id");
-        TUser user = userService.getUser(id);
+        User user = userService.getUser(id);
         setAttr("user",user);
         render("profile.html");
     }
@@ -77,7 +77,7 @@ public class UserController extends Controller {
     */
     public void detail(){
         String id = getPara("id");
-        TUser user = userService.getUser(id);
+        User user = userService.getUser(id);
         setAttr("user",user);
         render("userDetail.html");
     }

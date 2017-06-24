@@ -8,8 +8,8 @@ import com.jfinal.kit.LogKit;
 import com.jfinal.kit.StrKit;
 import com.link.api.kit.DateKit;
 import com.link.common.kit.ConvertKit;
-import com.link.model.TLog;
-import com.link.model.TUser;
+import com.link.model.Log;
+import com.link.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -37,9 +37,9 @@ public class ExceptionAndLogInterceptor extends LogInterceptor {
             Controller controller = invocation.getController();
             HttpServletRequest request = controller.getRequest();
 
-            TUser user = controller.getSessionAttr("user");
+            User user = controller.getSessionAttr("user");
             LogKit.info("当前用户："+user.getUsername());
-            TLog log = new TLog();
+            Log log = new Log();
             log.setId(StrKit.getRandomUUID());
             log.setActionkey(invocation.getActionKey());
             log.setOpertime(DateKit.toStr(new Date(),DateKit.timeFormat));

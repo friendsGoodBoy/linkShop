@@ -8,8 +8,8 @@ import com.link.common.util.JqGrid;
 import com.link.common.util.ResultJson;
 import com.link.core.PermissionServiceImpl;
 import com.link.core.RoleServiceImpl;
-import com.link.model.TPermission;
-import com.link.model.TRole;
+import com.link.model.Permission;
+import com.link.model.Role;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +35,7 @@ public class PermissionController extends Controller {
      * @data: 2017-06-08 22:17
     */
     public void dataGrid(){
-        TPermission model = getModel(TPermission.class,"",true);
+        Permission model = getModel(Permission.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         DataGrid dataGrid = permissionService.treeDataGrid(jqGrid,model,"T_PERMISSION");
         renderJson(dataGrid);
@@ -47,7 +47,7 @@ public class PermissionController extends Controller {
      * @data: 2017-06-08 22:22
     */
     public void saveOrUpdate(){
-        TPermission model = getModel(TPermission.class,"",true);
+        Permission model = getModel(Permission.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         renderJson(permissionService.saveOrUpdate(model,model.getId(),"T_PERMISSION",jqGrid));
     }
@@ -59,8 +59,8 @@ public class PermissionController extends Controller {
      */
     public void assignPermission(){
         String roleId = getPara("roleId");
-        TRole role = roleService.findRoleById(roleId);
-        List<TPermission> list = permissionService.findPermission();
+        Role role = roleService.findRoleById(roleId);
+        List<Permission> list = permissionService.findPermission();
         List<String> rolePermission = permissionService.findRolePermission(roleId);
         setAttr("role",role);
         setAttr("list",list);

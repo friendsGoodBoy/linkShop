@@ -8,7 +8,7 @@ import com.link.api.service.PermissionServiceI;
 import com.link.common.util.Constant;
 import com.link.common.util.ResultJson;
 import com.link.core.PermissionServiceImpl;
-import com.link.model.TUser;
+import com.link.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -39,7 +39,7 @@ public class AuthInterceptor implements Interceptor {
         resultJson.setMsg("禁止访问！如需访问请联系管理员！");
         if (ShiroKit.isAuthenticated()){
             if (urls == null) {
-                TUser user = controller.getSessionAttr("user");
+                User user = controller.getSessionAttr("user");
                 urls = permissionService.urls(user.getId());
             }
             String url = invocation.getActionKey();

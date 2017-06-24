@@ -16,16 +16,16 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 public class _MappingKit {
 
 	public static void mapping(ActiveRecordPlugin arp) {
-		arp.addMapping("T_LOG", "ID", TLog.class);
-		arp.addMapping("T_MENU", "ID", TMenu.class);
-		arp.addMapping("T_ORG", "ID", TOrg.class);
-		arp.addMapping("T_PERMISSION", "ID", TPermission.class);
-		arp.addMapping("T_ROLE", "ID", TRole.class);
-		arp.addMapping("T_ROLE_MENU", "ID", TRoleMenu.class);
-		arp.addMapping("T_ROLE_PERMISSION", "ID", TRolePermission.class);
-		arp.addMapping("T_USER", "ID", TUser.class);
-		arp.addMapping("T_USER_ORG", "ID", TUserOrg.class);
-		arp.addMapping("T_USER_ROLE", "ID", TUserRole.class);
+		arp.addMapping("t_log", "id", Log.class);
+		arp.addMapping("t_menu", "id", Menu.class);
+		arp.addMapping("t_org", "id", Org.class);
+		arp.addMapping("t_permission", "id", Permission.class);
+		arp.addMapping("t_role", "id", Role.class);
+		arp.addMapping("t_role_menu", "id", RoleMenu.class);
+		arp.addMapping("t_role_permission", "id", RolePermission.class);
+		arp.addMapping("t_user", "id", User.class);
+		arp.addMapping("t_user_org", "id", UserOrg.class);
+		arp.addMapping("t_user_role", "id", UserRole.class);
 	}
 }
 

@@ -1,6 +1,7 @@
 package com.link.admin.controller.vo;
 
-import com.link.model.TMenu;
+import com.jfinal.kit.StrKit;
+import com.link.model.Menu;
 import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
@@ -9,8 +10,8 @@ import java.util.List;
 /**
  * Created by linkzz on 2017-06-10.
  */
-public class TreeMenu extends TMenu {
-    private List<TMenu> nodes;
+public class TreeMenu extends Menu {
+    private List<Menu> nodes;
     private List<TreeMenu> treeMenus;
     private int size = 0;
 
@@ -32,14 +33,14 @@ public class TreeMenu extends TMenu {
 
     public TreeMenu(){}
 
-    public TreeMenu(List<TMenu> nodes){
+    public TreeMenu(List<Menu> nodes){
         this.nodes = nodes;
     }
 
     public List<TreeMenu> buildTree(){
         List<TreeMenu> treeMenus0 = new ArrayList<>();
-        for (TMenu node : nodes) {
-            if (node.getPid() == null) {
+        for (Menu node : nodes) {
+            if (StrKit.isBlank(node.getPid())) {
                 TreeMenu treeMenu = new TreeMenu();
                 BeanUtils.copyProperties(node,treeMenu);
                 build(node,treeMenu);
@@ -49,11 +50,11 @@ public class TreeMenu extends TMenu {
         return treeMenus0;
     }
 
-    private void build(TMenu node,TreeMenu treeMenu){
-        List<TMenu> children = getChildren(node);
+    private void build(Menu node,TreeMenu treeMenu){
+        List<Menu> children = getChildren(node);
         if (!children.isEmpty()) {
             List<TreeMenu> list = new ArrayList<>();
-            for (TMenu child : children) {
+            for (Menu child : children) {
                 TreeMenu treeMenu1 = new TreeMenu();
                 BeanUtils.copyProperties(child,treeMenu1);
                 build(child,treeMenu1);
@@ -64,10 +65,10 @@ public class TreeMenu extends TMenu {
         }
     }
 
-    private List<TMenu> getChildren(TMenu node){
-        List<TMenu> children = new ArrayList<TMenu>();
+    private List<Menu> getChildren(Menu node){
+        List<Menu> children = new ArrayList<Menu>();
         String id = node.getId();
-        for (TMenu child : nodes) {
+        for (Menu child : nodes) {
             if (id.equals(child.getPid())) {
                 children.add(child);
             }

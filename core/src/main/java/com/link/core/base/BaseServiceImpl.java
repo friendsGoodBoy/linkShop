@@ -111,7 +111,7 @@ public class BaseServiceImpl implements BaseServiceI{
         DataGrid dataGrid = new DataGrid();
         String select = "select * ";
         String sqlexcptSelect = "FROM "+table+" T ";
-        String sqlTree = " START WITH T.ID IN (SELECT id FROM "+table+" M WHERE M.PID is null) CONNECT BY PRIOR ID = T.PID";
+        //String sqlTree = " START WITH T.ID IN (SELECT id FROM "+table+" M WHERE M.PID is null) CONNECT BY PRIOR ID = T.PID";
         String sidx = "id";
         String sord = "desc";
         Page<Record> page = null;
@@ -130,17 +130,19 @@ public class BaseServiceImpl implements BaseServiceI{
         String criteriaString = "";
         //判断搜索是否为空
         criteriaString = this.installcriteriaString(jqGrid,criterion);
+        /*List<Record> listmodel = Db.find(select + sqlexcptSelect + "where t.pid = ''");
+        Tree tree = new Tree(listmodel);
+        List<Tree> treeMenuList = tree.buildTree();*/
         //判断搜索条件是否为空
         if (StrKit.isBlank(criteriaString)){
             //进行简单查询
-            page = Db.paginate(jqGrid.getPage(),jqGrid.getRows(),select,sqlexcptSelect+sqlTree);
+            page = Db.paginate(jqGrid.getPage(),jqGrid.getRows(),select,sqlexcptSelect);
         }else {
             //进行高级查询
             List params = new ArrayList();
             params = this.installParams(jqGrid,params,criterion);
-            page = Db.paginate(jqGrid.getPage(),jqGrid.getRows(),select,sqlexcptSelect + " where t." + criteriaString + sqlTree,params.toArray());
+            page = Db.paginate(jqGrid.getPage(),jqGrid.getRows(),select,sqlexcptSelect + " where t." + criteriaString,params.toArray());
         }
-
         dataGrid.setRows(page.getList());
         dataGrid.setRecords(page.getTotalRow());
         dataGrid.setTotal(page.getTotalPage());
