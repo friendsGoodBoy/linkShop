@@ -245,7 +245,7 @@ function pageInit(){
         multiselectWidth:20,
         rownumbers: true,
         rownumWidth: 25,
-        toolbar:[false,"top"],
+        toolbar:[true,"top"],
         // enable tree grid
         treeGrid:true,
         // which column is expandable

@@ -1,51 +1,70 @@
 #@layout()
 #define sidebar()
+<ul class="nav nav-list">
+    <li class="active">
+        <a href="index.html">
+            <i class="menu-icon fa fa-tachometer"></i>
+            <span class="menu-text"> 首页 </span>
+        </a>
+        <b class="arrow"></b>
+    </li>
     #for(menu : menus)
-        #if(menu.size == 0)
-            <li>
-                <a class="J_menuItem" href="#(ctx)/#(menu.pageurl)">
-                    <i class="fa #(menu.icon ??)"></i>
-                    <span class="nav-label">#(menu.name)</span>
+    #if(menu.size == 0)
+    <li class="active leftNav">
+        <a href="javascript:;" data-url="#(ctx)/#(menu.pageurl ??)" data-id="#(menu.id ??)">
+            <i class="menu-icon fa #(menu.icon ??)"></i>
+            <span class="menu-text"> #(menu.name) </span>
+        </a>
+        <b class="arrow"></b>
+    </li>
+    #else
+    <li class="">
+        <a href="javascript:;" data-url="#(ctx)/#(menu.pageurl ??)" data-id="#(menu.id ??)" class="dropdown-toggle">
+            <i class="menu-icon fa #(menu.icon ??)"></i>
+            <span class="menu-text"> #(menu.name) </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            #for(tree : menu.treeMenus)
+            #if(tree.size == 0)
+            <li class="leftNav">
+                <a href="javascript:;" data-url="#(ctx)/#(tree.pageurl ??)" data-id="#(tree.id)">
+                    <i class="menu-icon fa #(tree.icon)"></i>
+                    #(tree.name)
                 </a>
+
+                <b class="arrow"></b>
             </li>
-        #else
-            <li>
-                <a href="#(ctx)/#(menu.pageurl ??)">
-                    <i class="fa #(menu.icon ?? )"></i>
-                    <span class="nav-label">#(menu.name)</span>
-                    <span class="fa arrow"></span>
+            #else
+            <li class="">
+                <a href="javascript:;" data-url="#(ctx)/#(tree.pageurl ??)" data-id="#(tree.id)" class="dropdown-toggle">
+                    <i class="menu-icon fa #(tree.icon)"></i>
+                    #(tree.name)
+                    <b class="arrow fa fa-angle-down"></b>
                 </a>
-                <ul class="nav nav-second-level">
-                    #for(tree : menu.treeMenus)
-                        #if(tree.size == 0)
-                            <li>
-                                <a class="J_menuItem" href="#(ctx)/#(tree.pageurl ??)">
-                                    <i class="fa #(tree.icon)"></i>
-                                    <span class="nav-label">#(tree.name)</span>
-                                </a>
-                            </li>
-                        #else
-                            <li>
-                                <a href="#(tree.pageurl)">
-                                    <i class="fa #(tree.icon)"></i>
-                                    <span class="nav-label">#(tree.name)</span>
-                                    <span class="fa arrow"></span>
-                                </a>
-                                <ul class="nav nav-third-level">
-                                    #for(treeThird : tree.treeMenus)
-                                    <li>
-                                        <a class="J_menuItem" href="#(ctx)/#(treeThird.pageurl)" data-id="#(treeThird.id)">
-                                            <i class="fa #(treeThird.icon)"></i>
-                                            <span class="nav-label">#(treeThird.name)</span>
-                                        </a>
-                                    </li>
-                                    #end
-                                </ul>
-                            </li>
-                        #end
+
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    #for(treeThird : tree.treeMenus)
+                    <li class="leftNav">
+                        <a href="javascript:;" data-url="#(ctx)/#(treeThird.pageurl ??)" data-id="#(treeThird.id)">
+                            <i class="menu-icon fa #(treeThird.icon ??)"></i>
+                            #(treeThird.name)
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
                     #end
                 </ul>
             </li>
-        #end
+            #end
+            #end
+        </ul>
+    </li>
     #end
+    #end
+</ul>
 #end

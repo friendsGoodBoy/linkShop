@@ -1,7 +1,10 @@
 package com.link.core;
 
 import com.jfinal.kit.StrKit;
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
 import com.link.api.service.MenuServiceI;
+import com.link.common.kit.TreeKit;
 import com.link.common.util.Constant;
 import com.link.common.util.ResultJson;
 import com.link.core.base.BaseServiceImpl;
@@ -23,15 +26,7 @@ public class MenuServiceImpl extends BaseServiceImpl implements MenuServiceI {
                 "  LEFT JOIN T_ROLE R ON TRM.ROLE_ID = R.ID\n" +
                 "  LEFT JOIN T_USER_ROLE TUR ON R.ID = TUR.ROLE_ID\n" +
                 "  LEFT JOIN T_USER U ON TUR.USER_ID = U.ID WHERE U.ID=?";
-        List<Menu> menus;
-        /*if (StrKit.isBlank(pid)){
-            sql = sql + " and T.PID IS NULL";
-            menus = TMenu.dao.find(sql,userId);
-        }else {
-            sql = sql + "  and T.PID = ?";
-            menus = TMenu.dao.find(sql,userId,pid);
-        }*/
-        menus = Menu.dao.find(sql,userId);
+        List<Menu> menus = Menu.dao.find(sql,userId);
         return menus;
     }
 
@@ -46,9 +41,11 @@ public class MenuServiceImpl extends BaseServiceImpl implements MenuServiceI {
     }
 
     @Override
-    public List<Menu> findMenu() {
-        List<Menu> list = Menu.dao.find("SELECT * FROM T_MENU T START WITH T.ID IN (SELECT id FROM T_MENU M WHERE M.PID is null) CONNECT BY PRIOR ID = T.PID");
-        return list;
+    public List<TreeKit> findMenu() {
+        List<Record> listmodel = Db.find("select * from t_menu t");
+        TreeKit tree = new TreeKit(listmodel);
+        List<TreeKit> treeMenuList = tree.buildTree();
+        return treeMenuList;
     }
 
     @Override

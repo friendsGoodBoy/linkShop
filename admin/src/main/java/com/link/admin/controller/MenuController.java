@@ -4,6 +4,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.kit.LogKit;
 import com.link.api.service.MenuServiceI;
 import com.link.api.service.RoleServiceI;
+import com.link.common.kit.TreeKit;
 import com.link.common.util.DataGrid;
 import com.link.common.util.JqGrid;
 import com.link.common.util.ResultJson;
@@ -62,7 +63,7 @@ public class MenuController extends Controller {
     public void assignMenu(){
         String roleId = getPara("roleId");
         Role role = roleService.findRoleById(roleId);
-        List<Menu> list = menuService.findMenu();
+        List<TreeKit> list = menuService.findMenu();
         List<String> roleMenus = menuService.findRoleMenus(roleId);
         setAttr("role",role);
         setAttr("list",list);

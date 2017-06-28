@@ -7,9 +7,9 @@ import com.jfinal.kit.HashKit;
 import com.jfinal.kit.LogKit;
 import com.link.admin.controller.validator.LoginValidator;
 import com.link.admin.controller.vo.TreeMenu;
-import com.link.api.plugin.shiro.ShiroKit;
 import com.link.api.service.MenuServiceI;
 import com.link.api.service.UserServiceI;
+import com.link.common.plugin.shiro.ShiroKit;
 import com.link.common.util.Constant;
 import com.link.common.util.ResultJson;
 import com.link.core.MenuServiceImpl;
@@ -51,7 +51,7 @@ public class IndexController extends Controller{
 
     @Clear
     public void home(){
-        render("home.html");
+        render("_view/common/_home.html");
     }
 
     @Clear

@@ -1,8 +1,11 @@
 package com.link.common.kit;
 
 /**
- * Created by linkzz on 2017-06-05.
- */
+ * @ClassName: ConvertKit
+ * @Description: 各种转换工具类
+ * @author: linkzz
+ * @data: 2017-06-28 11:34
+*/
 public class ConvertKit {
     /**
      * @Description: boolean 值和 0/1的转换

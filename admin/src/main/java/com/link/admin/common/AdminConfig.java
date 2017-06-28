@@ -18,8 +18,8 @@ import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.link.admin.controller.IndexController;
 import com.link.admin.controller.shiro.ShiroTag;
-import com.link.api.plugin.shiro.ShiroInterceptor;
-import com.link.api.plugin.shiro.ShiroPlugin;
+import com.link.common.plugin.shiro.ShiroInterceptor;
+import com.link.common.plugin.shiro.ShiroPlugin;
 import com.link.common.util.Constant;
 import com.link.model._MappingKit;
 
