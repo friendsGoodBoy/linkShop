@@ -25,11 +25,11 @@ public abstract class BaseUserOrg<M extends BaseUserOrg<M>> extends Model<M> imp
 		return get("user_id");
 	}
 
-	public void setOrgId(java.lang.String orgId) {
+	public void setOrgId(java.lang.Integer orgId) {
 		set("org_id", orgId);
 	}
 
-	public java.lang.String getOrgId() {
+	public java.lang.Integer getOrgId() {
 		return get("org_id");
 	}
 

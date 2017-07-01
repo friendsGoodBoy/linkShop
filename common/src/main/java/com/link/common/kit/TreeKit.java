@@ -1,8 +1,6 @@
 package com.link.common.kit;
 
-import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Record;
-import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,71 +8,72 @@ import java.util.List;
 /**
  * Created by linkzz on 2017-06-28.
  */
-public class TreeKit {
-    private List<Record> nodes;
-    private List<TreeKit> trees;
-    private int size = 0;
+public class TreeKit{
+    private List<Record> list = new ArrayList<>();
+    private List<Record> jqGridList = new ArrayList<>();//排序完成后的list
+    private String node_id = "id";
+    private Record parent;
 
-    public int getSize() {
-        return size;
+    public void setNode_id(String node_id) {
+        this.node_id = node_id;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public TreeKit(List<Record> list){
+        this.list = list;
     }
 
-    public List<TreeKit> getTreeMenus() {
-        return trees;
+    //开始排序
+    public List<Record> startSorting(){
+        List<Record> roots = findRoots();
+        for (Record rootNode : roots){
+            jqGridList.add(rootNode);
+            deepSearchChildNodes(rootNode);
+        }
+        return jqGridList;
     }
 
-    public void setTreeMenus(List<TreeKit> trees) {
-        this.trees = trees;
-    }
-
-    public TreeKit(){}
-
-    public TreeKit(List<Record> nodes){
-        this.nodes = nodes;
-    }
-
-    public List<TreeKit> buildTree(){
-        List<TreeKit> treeMenus0 = new ArrayList<>();
-        if (nodes != null && nodes.size() > 0){
-            for (Record node : nodes) {
-                if (StrKit.isBlank(node.get("pid"))) {
-                    TreeKit treeMenu = new TreeKit();
-                    BeanUtils.copyProperties(node,treeMenu);
-                    build(node,treeMenu);
-                    treeMenus0.add(treeMenu);
+    public void deepSearchChildNodes(Record parent){
+        parent.set("isLeaf",false);
+        parent.set("expanded",true);
+        List<Record> findChildAtNode = findChildAtNode(parent);
+        if (findChildAtNode.size() > 0){
+            for (Record n : findChildAtNode){
+                if (parent.get("level") == null){
+                    parent.set("level","0");
                 }
+                n.set("level",String.valueOf(Integer.parseInt(parent.get("level"))+1));
+                n.set("expanded",true);
             }
+        }else {
+            parent.set("isLeaf",true);
+            parent.set("expanded",false);
         }
-        return treeMenus0;
-    }
-
-    private void build(Record node,TreeKit treeMenu){
-        List<Record> children = getChildren(node);
-        if (!children.isEmpty()) {
-            List<TreeKit> list = new ArrayList<>();
-            for (Record child : children) {
-                TreeKit treeMenu1 = new TreeKit();
-                BeanUtils.copyProperties(child,treeMenu1);
-                build(child,treeMenu1);
-                list.add(treeMenu1);
-            }
-            treeMenu.setTreeMenus(list);
-            treeMenu.setSize(children.size());
+        while (findChildAtNode.size() > 0){
+            jqGridList.add(findChildAtNode.get(0));
+            deepSearchChildNodes(findChildAtNode.get(0));
+            findChildAtNode.remove(0);
         }
     }
 
-    private List<Record> getChildren(Record node){
-        List<Record> children = new ArrayList<Record>();
-        String id = node.get("id");
-        for (Record child : nodes) {
-            if (id.equals(child.get("pid"))) {
-                children.add(child);
+    public List<Record> findRoots(){
+        List<Record> roots = new ArrayList<>();
+        for (Record n : list){
+            if (n.get("parent") == null || "".equals(n.get("parent"))){
+                roots.add(n);
             }
         }
-        return children;
+        return roots;
+    }
+
+    public List<Record> findChildAtNode(Record currentNode){
+        List<Record> childs = new ArrayList<>();
+        for (Record n : list){
+            if (n == currentNode)
+                continue;
+            if (currentNode.get("id").equals(n.get("parent"))){
+                childs.add(n);
+            }
+        }
+        return childs;
     }
 }

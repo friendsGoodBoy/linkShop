@@ -1,6 +1,7 @@
 package com.link.admin.controller;
 
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Record;
 import com.link.api.service.PermissionServiceI;
 import com.link.api.service.RoleServiceI;
 import com.link.common.util.DataGrid;
@@ -11,6 +12,7 @@ import com.link.core.RoleServiceImpl;
 import com.link.model.Permission;
 import com.link.model.Role;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -60,10 +62,18 @@ public class PermissionController extends Controller {
     public void assignPermission(){
         String roleId = getPara("roleId");
         Role role = roleService.findRoleById(roleId);
-        List<Permission> list = permissionService.findPermission();
+        List<Record> list = permissionService.findPermission();
         List<String> rolePermission = permissionService.findRolePermission(roleId);
+        List<Permission> permissions = new ArrayList<>();
+        for (Record record : list){
+            Permission permission = new Permission();
+            permission.setId(record.get("id"));
+            permission.setName(record.get("name"));
+            permission.setIntro(record.getStr("level"));
+            permissions.add(permission);
+        }
         setAttr("role",role);
-        setAttr("list",list);
+        setAttr("list",permissions);
         setAttr("rolePermission",rolePermission);
         render("assign_permission.html");
     }

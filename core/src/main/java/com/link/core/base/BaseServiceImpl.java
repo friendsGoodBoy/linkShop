@@ -9,6 +9,7 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.link.api.service.base.BaseServiceI;
+import com.link.common.kit.TreeKit;
 import com.link.common.util.*;
 
 import java.util.ArrayList;
@@ -130,9 +131,6 @@ public class BaseServiceImpl implements BaseServiceI{
         String criteriaString = "";
         //判断搜索是否为空
         criteriaString = this.installcriteriaString(jqGrid,criterion);
-        /*List<Record> listmodel = Db.find(select + sqlexcptSelect + "where t.pid = ''");
-        Tree tree = new Tree(listmodel);
-        List<Tree> treeMenuList = tree.buildTree();*/
         //判断搜索条件是否为空
         if (StrKit.isBlank(criteriaString)){
             //进行简单查询
@@ -143,7 +141,8 @@ public class BaseServiceImpl implements BaseServiceI{
             params = this.installParams(jqGrid,params,criterion);
             page = Db.paginate(jqGrid.getPage(),jqGrid.getRows(),select,sqlexcptSelect + " where t." + criteriaString,params.toArray());
         }
-        dataGrid.setRows(page.getList());
+        TreeKit listkit = new TreeKit(page.getList());
+        dataGrid.setRows(listkit.startSorting());
         dataGrid.setRecords(page.getTotalRow());
         dataGrid.setTotal(page.getTotalPage());
         dataGrid.setPage(jqGrid.getPage());

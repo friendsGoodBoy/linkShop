@@ -24,36 +24,34 @@
         <div class="layui-input-block">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-bordered table-hover" align="center">
                 #for(x : list)
-                    #for(menu : x.nodes)
-                        #if(menu.treelevel == 0)
+                        #if(x.icon == "0")
                         <tr>
                             <td>
-                                <input type="checkbox" level="0" obj="node_#(x.treelevel)" name="listMenu" value="#(x.id ??)" title="#(x.name ??)">
+                                <input type="checkbox" level="0" obj="node_#(x.icon)" name="listMenu" value="#(x.id ??)" title="#(x.name ??)">
                             </td>
                         </tr>
 
-                        #elseif(x.treelevel == 1)
+                        #elseif(x.icon == "1")
                         <tr>
                             <td style="padding-left: 20px">
-                                <input type="checkbox" level="1" obj="node_#(x.treelevel)_#(x.id)" name="listMenu" value="#(x.id ??)" title="#(x.name ??)">
+                                <input type="checkbox" level="1" obj="node_#(x.icon)_#(x.id)" name="listMenu" value="#(x.id ??)" title="#(x.name ??)">
                             </td>
                         </tr>
 
-                        #elseif(x.treelevel == 2)
+                        #elseif(x.icon == "2")
                         <tr>
                             <td style="padding-left: 50px">
-                                <input type="checkbox" level="2" obj="node_#(x.treelevel)_#(x.id)" name="listMenu" value="#(x.id ??)" title="#(x.name ??)">
+                                <input type="checkbox" level="2" obj="node_#(x.icon)_#(x.id)" name="listMenu" value="#(x.id ??)" title="#(x.name ??)">
                             </td>
                         </tr>
 
-                        #elseif(x.treelevel == 3)
+                        #elseif(x.icon == "3")
                         <tr>
                             <td style="padding-left: 80px">
-                                <input type="checkbox" level="3" obj="node_#(x.treelevel)_#(x.id)" name="listMenu" value="#(x.id ??)" title="#(x.name ??)">
+                                <input type="checkbox" level="3" obj="node_#(x.icon)_#(x.id)" name="listMenu" value="#(x.id ??)" title="#(x.name ??)">
                             </td>
                         </tr>
                         #end
-                    #end
                 #end
                 <tr>
                     <td></td>

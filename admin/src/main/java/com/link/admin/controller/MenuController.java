@@ -1,10 +1,11 @@
 package com.link.admin.controller;
 
 import com.jfinal.core.Controller;
+import com.jfinal.json.JFinalJson;
 import com.jfinal.kit.LogKit;
+import com.jfinal.plugin.activerecord.Record;
 import com.link.api.service.MenuServiceI;
 import com.link.api.service.RoleServiceI;
-import com.link.common.kit.TreeKit;
 import com.link.common.util.DataGrid;
 import com.link.common.util.JqGrid;
 import com.link.common.util.ResultJson;
@@ -13,9 +14,7 @@ import com.link.core.RoleServiceImpl;
 import com.link.model.Menu;
 import com.link.model.Role;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by linkzz on 2017-03-09.
@@ -40,8 +39,8 @@ public class MenuController extends Controller {
     public void dataGrid(){
         Menu model = getModel(Menu.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
-        DataGrid dataGrid = menuService.dataGrid(jqGrid,model,"t_menu");
-        renderJson(menuService.treeDataGrid(jqGrid,model,"t_menu"));
+        DataGrid dataGrid = menuService.treeDataGrid(jqGrid,model,"t_menu");
+        renderJson(dataGrid);
     }
 
     /**
@@ -63,10 +62,18 @@ public class MenuController extends Controller {
     public void assignMenu(){
         String roleId = getPara("roleId");
         Role role = roleService.findRoleById(roleId);
-        List<TreeKit> list = menuService.findMenu();
+        List<Record> list = menuService.findMenu();
         List<String> roleMenus = menuService.findRoleMenus(roleId);
+        List<Menu> menus = new ArrayList<>();
+        for (Record record : list){
+            Menu menu = new Menu();
+            menu.setId(record.get("id"));
+            menu.setName(record.get("name"));
+            menu.setIcon(record.getStr("level"));
+            menus.add(menu);
+        }
         setAttr("role",role);
-        setAttr("list",list);
+        setAttr("list",menus);
         setAttr("roleMenus",roleMenus);
         render("assign_menu.html");
     }
@@ -81,6 +88,12 @@ public class MenuController extends Controller {
         String [] listMenuId = getParaValues("listMenuId");
         ResultJson resultJson = menuService.saveRoleMenu(roleId, Arrays.asList(listMenuId));
         renderJson(resultJson);
+    }
+
+    public void tree(){
+        List<Record> list = menuService.findMenu();
+        LogKit.info(JFinalJson.getJson().toJson(list));
+        renderJson(list);
     }
 
     public void add(){

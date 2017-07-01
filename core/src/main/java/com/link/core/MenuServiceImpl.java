@@ -41,10 +41,10 @@ public class MenuServiceImpl extends BaseServiceImpl implements MenuServiceI {
     }
 
     @Override
-    public List<TreeKit> findMenu() {
+    public List<Record> findMenu() {
         List<Record> listmodel = Db.find("select * from t_menu t");
-        TreeKit tree = new TreeKit(listmodel);
-        List<TreeKit> treeMenuList = tree.buildTree();
+        TreeKit listkit = new TreeKit(listmodel);
+        List<Record> treeMenuList = listkit.startSorting();
         return treeMenuList;
     }
 

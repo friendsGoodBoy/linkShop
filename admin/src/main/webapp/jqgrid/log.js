@@ -65,7 +65,11 @@ function pageInit(){
                 label: '参数',
                 name: 'params',
                 width: 150,
-                editable:false
+                editable:false,
+                searchoptions : {
+                    // show search options
+                    sopt: ["in","ni"]
+                }
             },
             {
                 label: '返回结果',

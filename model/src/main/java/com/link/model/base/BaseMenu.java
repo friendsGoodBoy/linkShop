@@ -25,12 +25,12 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 		return get("name");
 	}
 
-	public void setPid(java.lang.String pid) {
-		set("pid", pid);
+	public void setParent(java.lang.String parent) {
+		set("parent", parent);
 	}
 
-	public java.lang.String getPid() {
-		return get("pid");
+	public java.lang.String getParent() {
+		return get("parent");
 	}
 
 	public void setDescription(java.lang.String description) {
@@ -65,36 +65,12 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 		return get("status");
 	}
 
-	public void setIsleaf(java.lang.String isleaf) {
-		set("isleaf", isleaf);
-	}
-
-	public java.lang.String getIsleaf() {
-		return get("isleaf");
-	}
-
 	public void setLoaded(java.lang.String loaded) {
 		set("loaded", loaded);
 	}
 
 	public java.lang.String getLoaded() {
 		return get("loaded");
-	}
-
-	public void setExpanded(java.lang.String expanded) {
-		set("expanded", expanded);
-	}
-
-	public java.lang.String getExpanded() {
-		return get("expanded");
-	}
-
-	public void setTreelevel(java.lang.Integer treelevel) {
-		set("treelevel", treelevel);
-	}
-
-	public java.lang.Integer getTreelevel() {
-		return get("treelevel");
 	}
 
 	public void setIcon(java.lang.String icon) {

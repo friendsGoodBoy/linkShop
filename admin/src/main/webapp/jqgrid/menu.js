@@ -4,7 +4,7 @@
 $(function(){
     //页面加载完成之后执行
     $.jgrid.defaults.width = $(window).width();
-    $.jgrid.defaults.height = $(window).height-130;
+    $.jgrid.defaults.height = $(window).height()-165;
     $.jgrid.defaults.responsive = true;
     $.jgrid.defaults.styleUI = 'Bootstrap';
     $.jgrid.styleUI.Bootstrap.base.rowTable = "table table-bordered table-striped";
@@ -21,7 +21,7 @@ function pageInit(){
         datatype: "json",
         mtype: "POST",
         caption: "",
-        loadonce: false,
+        loadonce: true,
         colModel: [
             {
                 label: 'ID',
@@ -43,7 +43,7 @@ function pageInit(){
             },
             {
                 label: '父级ID',
-                name: 'pid',
+                name: 'parent',
                 hidden:true
             },
             {
@@ -121,53 +121,6 @@ function pageInit(){
                     colpos: 2,
                     rowpos: 3
                 }
-            },{
-                label: '层级',
-                name: 'treelevel',
-                width: 150,
-                editable:true,
-                edittype:"select",
-                editoptions:{
-                    value:"0:零级;1:一级;2:二级"
-                },
-                formatter:function (cellvalue,options,rowObject) {
-                    var temp = "零级";
-                    if (cellvalue == 0){
-                        temp = "零级";
-                    }else if (cellvalue == 1){
-                        temp = "一级";
-                    }else if (cellvalue == 2){
-                        temp = "二级";
-                    }else {
-                        temp = "三级";
-                    }
-                    return temp;
-                },
-                formoptions: {
-                    colpos: 1,
-                    rowpos: 4
-                }
-            },
-            {
-                label: '子节点',
-                name: 'isleaf',
-                width: 150,
-                editable:true,
-                edittype:"select",
-                editoptions:{
-                    value:"true:是;false:否"
-                },
-                formatter:function (cellvalue,options,rowObject) {
-                    var temp = "是";
-                    if (cellvalue == "false"){
-                        temp = "否";
-                    }
-                    return temp;
-                },
-                formoptions: {
-                    colpos: 2,
-                    rowpos: 4
-                }
             },
             {
                 label: '异步加载',
@@ -191,34 +144,6 @@ function pageInit(){
                 }
             },
             {
-                label: '展开',
-                name: 'expanded',
-                width: 150,
-                editable:true,
-                edittype:"select",
-                editoptions:{
-                    value:"true:展开;false:隐藏"
-                },
-                formatter:function (cellvalue,options,rowObject) {
-                    var temp = "展开";
-                    if (cellvalue == "false"){
-                        temp = "隐藏";
-                    }
-                    return temp;
-                },
-                formoptions: {
-                    colpos: 2,
-                    rowpos: 5
-                }
-            },
-            {
-                name : "lft",
-                hidden : true
-            },{
-                name : "rgt",
-                hidden : true
-            },
-            {
                 name: '操作中心',
                 index: '',
                 width: 100,
@@ -229,7 +154,7 @@ function pageInit(){
             }
         ],
         shrinkToFit:true,
-        colMenu : true,
+        //colMenu : true,
         altRows:true,
         toppager:false,
         jqModal:true,
@@ -237,7 +162,7 @@ function pageInit(){
         rowList:[10,20,30],
         hoverrows:true,
         viewrecords: true,
-        gridview: true,
+        //gridview: false,
         sortable:true,
         sortname:'id',
         multiselect:true,
@@ -246,25 +171,17 @@ function pageInit(){
         rownumbers: true,
         rownumWidth: 25,
         toolbar:[true,"top"],
-        // enable tree grid
         treeGrid:true,
-        // which column is expandable
         expandColumn:"name",
         expandColClick:true,
-        // datatype
         treedatatype:"json",
-        // the model used
         treeGridModel:"adjacency",
-        // configuration of the data comming from server
         treeReader:{
-            left_field : "lft",
-            right_field : "rgt",
-            parent_id_field : "pid",
-            level_field : "treelevel",
-            leaf_field : "isleaf",
-            expanded_field : "expanded",
-            loaded : "loaded",
-            icon_field : "icon"
+            level_field:"level",
+            parent_id_field: "parent",  //值必须为父级菜单的id值。
+            leaf_field:"isLeaf",
+            expanded_field:"expanded",
+            loaded:"loaded"
         },
         loadError : function(xhr, st, err) {
             layer.msg("Type: " + st + "; Response: " + xhr.status + " "+ xhr.statusText, {time:1800});
@@ -285,7 +202,9 @@ function pageInit(){
             del: true,
             refresh: true,
             view: true,
-            columns:false
+            columns:true,
+            position: "left",
+            cloneToTop: true
         },
         // options for the Edit Dialog
         {
@@ -353,5 +272,4 @@ function pageInit(){
         layer.msg(obj.msg, {time:1800});
     };
     $('#jqGrid').jqGrid('bindKeys');
-
 }

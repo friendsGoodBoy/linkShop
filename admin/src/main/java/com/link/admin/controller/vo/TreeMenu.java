@@ -40,7 +40,7 @@ public class TreeMenu extends Menu {
     public List<TreeMenu> buildTree(){
         List<TreeMenu> treeMenus0 = new ArrayList<>();
         for (Menu node : nodes) {
-            if (StrKit.isBlank(node.getPid())) {
+            if (StrKit.isBlank(node.getParent())) {
                 TreeMenu treeMenu = new TreeMenu();
                 BeanUtils.copyProperties(node,treeMenu);
                 build(node,treeMenu);
@@ -69,7 +69,7 @@ public class TreeMenu extends Menu {
         List<Menu> children = new ArrayList<Menu>();
         String id = node.getId();
         for (Menu child : nodes) {
-            if (id.equals(child.getPid())) {
+            if (id.equals(child.getParent())) {
                 children.add(child);
             }
         }

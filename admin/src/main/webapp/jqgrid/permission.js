@@ -4,7 +4,7 @@
 $(function(){
     //页面加载完成之后执行
     $.jgrid.defaults.width = $(window).width();
-    $.jgrid.defaults.height = $(window).height-130;
+    $.jgrid.defaults.height = $(window).height-165;
     $.jgrid.defaults.responsive = true;
     $.jgrid.defaults.styleUI = 'Bootstrap';
     $.jgrid.styleUI.Bootstrap.base.rowTable = "table table-bordered table-striped";
@@ -43,7 +43,7 @@ function pageInit(){
             },
             {
                 label: '父级权限',
-                name: 'pid',
+                name: 'parent',
                 hidden:true
             },
             {
@@ -77,54 +77,6 @@ function pageInit(){
                 }
             },
             {
-                label: '层级',
-                name: 'treelevel',
-                width: 150,
-                editable:true,
-                edittype:"select",
-                editoptions:{
-                    value:"0:零级;1:一级;2:二级;3:三级"
-                },
-                formatter:function (cellvalue,options,rowObject) {
-                    var temp = "零级";
-                    if (cellvalue == 0){
-                        temp = "零级";
-                    }else if (cellvalue == 1){
-                        temp = "一级";
-                    }else if (cellvalue == 2){
-                        temp = "二级";
-                    }else {
-                        temp = "三级";
-                    }
-                    return temp;
-                },
-                formoptions: {
-                    colpos: 1,
-                    rowpos: 3
-                }
-            },
-            {
-                label: '子节点',
-                name: 'isleaf',
-                width: 150,
-                editable:true,
-                edittype:"select",
-                editoptions:{
-                    value:"true:是;false:否"
-                },
-                formatter:function (cellvalue,options,rowObject) {
-                    var temp = "是";
-                    if (cellvalue == "false"){
-                        temp = "否";
-                    }
-                    return temp;
-                },
-                formoptions: {
-                    colpos: 2,
-                    rowpos: 3
-                }
-            },
-            {
                 label: '异步加载',
                 name: 'loaded',
                 width: 150,
@@ -146,34 +98,6 @@ function pageInit(){
                 }
             },
             {
-                label: '展开',
-                name: 'expanded',
-                width: 150,
-                editable:true,
-                edittype:"select",
-                editoptions:{
-                    value:"true:展开;false:隐藏"
-                },
-                formatter:function (cellvalue,options,rowObject) {
-                    var temp = "展开";
-                    if (cellvalue == "false"){
-                        temp = "隐藏";
-                    }
-                    return temp;
-                },
-                formoptions: {
-                    colpos: 2,
-                    rowpos: 4
-                }
-            },
-            {
-                name : "lft",
-                hidden : true
-            },{
-                name : "rgt",
-                hidden : true
-            },
-            {
                 name: '操作中心',
                 index: '',
                 width: 100,
@@ -192,7 +116,7 @@ function pageInit(){
         rowList:[10,20,30],
         hoverrows:true,
         viewrecords: true,
-        gridview: true,
+        //gridview: true,
         sortable:true,
         sortname:'id',
         multiselect:true,
@@ -212,14 +136,11 @@ function pageInit(){
         treeGridModel:"adjacency",
         // configuration of the data comming from server
         treeReader:{
-            left_field : "lft",
-            right_field : "rgt",
-            parent_id_field : "pid",
-            level_field : "treelevel",
-            leaf_field : "isleaf",
-            expanded_field : "expanded",
-            loaded : "loaded",
-            icon_field : "icon"
+            level_field:"level",
+            parent_id_field: "parent",  //值必须为父级菜单的id值。
+            leaf_field:"isLeaf",
+            expanded_field:"expanded",
+            loaded:"loaded"
         },
         loadError : function(xhr, st, err) {
             layer.msg("Type: " + st + "; Response: " + xhr.status + " "+ xhr.statusText, {time:1800});

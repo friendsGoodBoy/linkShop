@@ -9,7 +9,7 @@ import java.util.List;
  * @author:linkzz
  * @data:2017-05-06 19:25
 */
-public class DataGrid {
+public class DataGrid{
     private int total = 0;
     private int page = 0;
     private int records = 0;

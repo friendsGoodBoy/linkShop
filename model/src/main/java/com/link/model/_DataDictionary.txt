@@ -18,15 +18,12 @@ Table: t_menu
 -------------+--------------+------+-----+---------+---------
  id          | VARCHAR(32)  | NO   | PRI |         |         
  name        | VARCHAR(100) | YES  |     |         |         
- pid         | VARCHAR(32)  | YES  |     |         |         
+ parent      | VARCHAR(32)  | YES  |     |         |         
  description | VARCHAR(255) | YES  |     |         |         
  pageurl     | VARCHAR(255) | YES  |     |         |         
  type        | VARCHAR(10)  | YES  |     |         |         
  status      | VARCHAR(10)  | YES  |     |         |         
- isleaf      | VARCHAR(10)  | YES  |     |         |         
  loaded      | VARCHAR(10)  | YES  |     |         |         
- expanded    | VARCHAR(10)  | YES  |     |         |         
- treelevel   | INT(10)      | YES  |     |         |         
  icon        | VARCHAR(100) | YES  |     |         |         
 -------------+--------------+------+-----+---------+---------
 
@@ -34,7 +31,7 @@ Table: t_org
 ------------+--------------+------+-----+---------+---------
  Field      | Type         | Null | Key | Default | Remarks 
 ------------+--------------+------+-----+---------+---------
- id         | VARCHAR(32)  | NO   | PRI |         |         
+ id         | INT(10)      | NO   | PRI |         | 主键      
  name       | VARCHAR(100) | YES  |     |         |         
  comcode    | VARCHAR(10)  | YES  |     |         |         
  type       | VARCHAR(10)  | YES  |     |         |         
@@ -53,14 +50,11 @@ Table: t_permission
  value      | VARCHAR(50)  | YES  |     |         |         
  url        | VARCHAR(255) | YES  |     |         |         
  intro      | VARCHAR(255) | YES  |     |         |         
- pid        | VARCHAR(32)  | YES  |     | 0       |         
+ parent     | VARCHAR(32)  | YES  |     | 0       |         
  created_at | VARCHAR(20)  | YES  |     |         |         
  updated_at | VARCHAR(20)  | YES  |     |         |         
  deleted_at | VARCHAR(20)  | YES  |     |         |         
- isleaf     | VARCHAR(10)  | YES  |     |         |         
  loaded     | VARCHAR(10)  | YES  |     |         |         
- expanded   | VARCHAR(10)  | YES  |     |         |         
- treelevel  | INT(10)      | YES  |     |         |         
 ------------+--------------+------+-----+---------+---------
 
 Table: t_role
@@ -122,7 +116,7 @@ Table: t_user_org
 ---------+-------------+------+-----+---------+---------
  id      | VARCHAR(32) | NO   | PRI |         |         
  user_id | VARCHAR(32) | YES  |     |         |         
- org_id  | VARCHAR(32) | YES  |     |         |         
+ org_id  | INT(10)     | YES  |     |         |         
 ---------+-------------+------+-----+---------+---------
 
 Table: t_user_role

@@ -2,8 +2,11 @@ package com.link.core;
 
 import com.jfinal.aop.Before;
 import com.jfinal.kit.StrKit;
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.link.api.service.PermissionServiceI;
+import com.link.common.kit.TreeKit;
 import com.link.common.util.Constant;
 import com.link.common.util.ResultJson;
 import com.link.core.base.BaseServiceImpl;
@@ -18,11 +21,11 @@ import java.util.List;
  */
 public class PermissionServiceImpl extends BaseServiceImpl implements PermissionServiceI {
     @Override
-    public List<Permission> findPermission() {
-        return Permission.dao.find("SELECT *\n" +
-                "  FROM t_permission T\n" +
-                " START WITH T.ID in (select id from t_permission m where m.pid is null)\n" +
-                "CONNECT BY PRIOR ID = T.Pid");
+    public List<Record> findPermission() {
+        List<Record> listmodel = Db.find("select * from t_permission t");
+        TreeKit listkit = new TreeKit(listmodel);
+        List<Record> treeList = listkit.startSorting();
+        return treeList;
     }
 
     @Override
