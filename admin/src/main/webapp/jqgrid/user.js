@@ -4,7 +4,7 @@
 $(function(){
     //页面加载完成之后执行
     $.jgrid.defaults.width = $(window).width();
-    $.jgrid.defaults.height = $(window).height-165;
+    $.jgrid.defaults.height = $(window).height()-165;
     $.jgrid.defaults.responsive = true;
     $.jgrid.defaults.styleUI = 'Bootstrap';
     $.jgrid.styleUI.Bootstrap.base.rowTable = "table table-bordered table-striped";

@@ -4,7 +4,7 @@
 $(function(){
     //页面加载完成之后执行
     $.jgrid.defaults.width = $(window).width();
-    $.jgrid.defaults.height = $(window).height-165;
+    $.jgrid.defaults.height = $(window).height()-165;
     $.jgrid.defaults.responsive = true;
     $.jgrid.defaults.styleUI = 'Bootstrap';
     $.jgrid.styleUI.Bootstrap.base.rowTable = "table table-bordered table-striped";
@@ -21,7 +21,7 @@ function pageInit(){
         datatype: "json",
         mtype: "POST",
         caption: "",
-        loadonce: false,
+        loadonce: true,
         colModel: [
             {
                 label: 'ID',
@@ -108,7 +108,7 @@ function pageInit(){
             }
         ],
         shrinkToFit:true,
-        colMenu : true,
+        //colMenu : true,
         altRows:true,
         toppager:false,
         jqModal:true,
@@ -116,7 +116,7 @@ function pageInit(){
         rowList:[10,20,30],
         hoverrows:true,
         viewrecords: true,
-        //gridview: true,
+        //gridview: false,
         sortable:true,
         sortname:'id',
         multiselect:true,
@@ -124,17 +124,12 @@ function pageInit(){
         multiselectWidth:20,
         rownumbers: true,
         rownumWidth: 25,
-        toolbar:[false,"top"],
-        // enable tree grid
+        toolbar:[true,"top"],
         treeGrid:true,
-        // which column is expandable
         expandColumn:"name",
         expandColClick:true,
-        // datatype
         treedatatype:"json",
-        // the model used
         treeGridModel:"adjacency",
-        // configuration of the data comming from server
         treeReader:{
             level_field:"level",
             parent_id_field: "parent",  //值必须为父级菜单的id值。
