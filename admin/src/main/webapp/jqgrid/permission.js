@@ -116,7 +116,7 @@ function pageInit(){
         rowList:[10,20,30],
         hoverrows:true,
         viewrecords: true,
-        //gridview: false,
+        gridview: true,
         sortable:true,
         sortname:'id',
         multiselect:true,
@@ -221,6 +221,7 @@ function pageInit(){
     );
     function afterCompleteFun(response,postdata) {
         var obj=jQuery.parseJSON(response.responseText);
+        jQuery("#jqGrid").trigger("reloadGrid");
         layer.msg(obj.msg, {time:1800});
     };
     $('#jqGrid').jqGrid('bindKeys');

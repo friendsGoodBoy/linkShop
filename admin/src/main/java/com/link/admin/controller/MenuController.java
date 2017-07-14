@@ -51,6 +51,7 @@ public class MenuController extends Controller {
     public void saveOrUpdate(){
         Menu model = getModel(Menu.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
+        model.setLoaded("true");
         renderJson(menuService.saveOrUpdate(model,model.getId(),"t_menu",jqGrid));
     }
 

@@ -15,5 +15,9 @@ public class AdminRoutes extends Routes {
         add("/role", RoleController.class,"/role");
         add("/permission", PermissionController.class,"/permission");
         add("/log", LogController.class,"/log");
+        add("/file",FileController.class,"/file");
+        add("/channel",ChannelController.class,"/channel");
+        add("/content",ContentController.class,"/content");
+
     }
 }

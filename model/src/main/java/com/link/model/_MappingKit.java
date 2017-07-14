@@ -16,6 +16,8 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 public class _MappingKit {
 
 	public static void mapping(ActiveRecordPlugin arp) {
+		arp.addMapping("t_channel", "id", Channel.class);
+		arp.addMapping("t_content", "id", Content.class);
 		arp.addMapping("t_log", "id", Log.class);
 		arp.addMapping("t_menu", "id", Menu.class);
 		arp.addMapping("t_org", "id", Org.class);

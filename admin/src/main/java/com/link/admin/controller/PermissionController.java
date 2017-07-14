@@ -51,6 +51,7 @@ public class PermissionController extends Controller {
     public void saveOrUpdate(){
         Permission model = getModel(Permission.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
+        model.setLoaded("true");
         renderJson(permissionService.saveOrUpdate(model,model.getId(),"T_PERMISSION",jqGrid));
     }
 
