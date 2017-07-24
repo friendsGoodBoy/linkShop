@@ -36,13 +36,13 @@
             <label class="layui-form-label">排序</label>
         </div>
         <div class="layui-form-mid layui-word-aux">
-            <input type="text" value="#(content.sorter)" name="model.sorter" required lay-verify="required" placeholder="排序" autocomplete="off" class="layui-input">
+            <input type="text" value="#(content.sorter)" name="model.sorter" required lay-verify="required"  placeholder="排序" autocomplete="off" class="layui-input">
         </div>
         <div class="layui-form-mid layui-word-aux">
             <label class="layui-form-label">浏览量</label>
         </div>
         <div class="layui-form-mid layui-word-aux">
-            <input type="text" value="#(content.view)" name="model.view" required lay-verify="required" placeholder="浏览量" autocomplete="off" class="layui-input">
+            <input type="text" value="#(content.view)" name="model.view"  placeholder="浏览量" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -100,8 +100,21 @@
         </div>
     </div>
 
+    <div class="layui-form-item">
+        <label class="layui-form-label">封面图片</label>
+        <div class="layui-input-block">
+            <div class="site-demo-upload">
+                <img id="LAY_demo_upload" width="200" src="#(content.img ??)">
+                <div class="site-demo-upbar">
+                    <input type="file" name="file"class="layui-upload-file">
+                    <input id="imgUrl" type="hidden" name="model.img" value="">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label">编辑器</label>
+        <label class="layui-form-label">内容详情</label>
         <div class="layui-input-block">
             <!--<textarea class="layui-textarea layui-hide" name="model.content" lay-verify="content" id="LAY_demo_editor">#(content.content ??)</textarea>-->
             <textarea id="editor_id" name="model.content" style="width:700px;height:300px;">#(content.content ??)</textarea>
@@ -137,7 +150,7 @@
             }
         });
     });
-    layui.use(['form', 'layedit','laydate'], function(){
+    layui.use(['form','upload', 'layedit','laydate'], function(){
         var form = layui.form()
             ,$ = layui.jquery
             ,layer = layui.layer
@@ -146,6 +159,15 @@
 
         //创建一个编辑器
         //var editIndex = layedit.build('LAY_demo_editor');
+
+        layui.upload({
+            url: '#(ctx)/file/upload'
+            ,success: function(res){
+                LAY_demo_upload.src = res.url;
+                imgUrl.value=res.url;
+                layer.msg(res.url,{time:1800});
+            }
+        });
 
         //自定义验证规则
         form.verify({

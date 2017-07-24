@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface ChannelServiceI extends BaseServiceI {
     public List<Channel> findChannelList();
+    public List<Channel> findNavList();
+    public Channel getChannal(String id);
 }

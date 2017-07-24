@@ -1,6 +1,7 @@
 package com.link.core;
 
 import com.jfinal.kit.StrKit;
+import com.jfinal.plugin.activerecord.Page;
 import com.link.api.service.ContentServiceI;
 import com.link.common.kit.DateKit;
 import com.link.common.util.Constant;
@@ -9,6 +10,7 @@ import com.link.core.base.BaseServiceImpl;
 import com.link.model.Content;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by linkzz on 2017-07-06.
@@ -54,5 +56,37 @@ public class ContentServiceImpl extends BaseServiceImpl implements ContentServic
     @Override
     public Content getContentById(String id) {
         return Content.dao.findById(id);
+    }
+
+    @Override
+    public List<Content> findContentList(String cid,boolean pic,int limit, String order) {
+        Page<Content> page = null;
+        if (pic == false){
+            //list = Content.dao.find("select * from t_content t where t.cid = ? order by t.createtime desc",cid);
+            page = Content.dao.paginate(1,limit,"select *","from t_content t where t.cid = ? order by t.createtime desc",cid);
+        }else {
+            //list = Content.dao.find("select * from t_content t where t.img is not null");
+            page = Content.dao.paginate(1,limit,"select *","from t_content t where t.cid = ? and t.img is not null order by t.createtime desc",cid);
+        }
+
+        return page.getList();
+    }
+
+    @Override
+    public Page<Content> findPage(String cid,int pages,int rows) {
+        String select = "select *";
+        String sqlexcptSelect = "from t_content t where t.cid = ?";
+        String order = " order by t.createtime desc";
+        Page<Content> page = Content.dao.paginate(pages,rows,select,sqlexcptSelect + order,cid);
+        return page;
+    }
+
+    @Override
+    public List<Content> good(int limit) {
+        String select = "select *";
+        String sqlexcptSelect = "from t_content t where t.good = 'on'";
+        String order = " order by t.createtime desc";
+        Page<Content> page = Content.dao.paginate(1,limit,select,sqlexcptSelect + order);
+        return page.getList();
     }
 }

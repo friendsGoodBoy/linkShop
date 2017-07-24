@@ -13,6 +13,8 @@ $(function(){
 function pageInit(){
     var jqGrid = "#jqGrid";
     var jqGridPager = "#jqGridPager";
+    var pnames = "";
+    //加载动态下拉列表
 
     //创建jqGrid组件
     $(jqGrid).jqGrid({
@@ -21,7 +23,7 @@ function pageInit(){
         datatype: "json",
         mtype: "POST",
         caption: "",
-        loadonce: true,
+        loadonce: false,
         colModel: [
             {
                 label: 'ID',
@@ -161,15 +163,13 @@ function pageInit(){
             }
         ],
         shrinkToFit:true,
-        //colMenu : true,
+        colMenu : true,
         altRows:true,
         toppager:false,
         jqModal:true,
-        rowNum:10000,
+        rowNum:10,
         rowList:[10,20,30],
-        hoverrows:true,
         viewrecords: true,
-        //gridview: false,
         sortable:true,
         sortname:'id',
         multiselect:true,
@@ -177,22 +177,7 @@ function pageInit(){
         multiselectWidth:20,
         rownumbers: true,
         rownumWidth: 25,
-        toolbar:[true,"top"],
-        treeGrid:true,
-        expandColumn:"name",
-        expandColClick:true,
-        treedatatype:"json",
-        treeGridModel:"adjacency",
-        treeReader:{
-            level_field:"level",
-            parent_id_field: "parent",  //值必须为父级菜单的id值。
-            leaf_field:"isLeaf",
-            expanded_field:"expanded",
-            loaded:"loaded"
-        },
-        loadError : function(xhr, st, err) {
-            layer.msg("Type: " + st + "; Response: " + xhr.status + " "+ xhr.statusText, {time:1800});
-        },
+        toolbar:[false,"top"],
         pager: jqGridPager
     });
     /*创建filterToolbar*/
@@ -216,14 +201,10 @@ function pageInit(){
         // options for the Edit Dialog
         {
             editCaption: "编辑",
-            top:$(window).height()/2-200,
+            top:$(window).height()/2-130,
             left:$(window).width()/2-300,
             width:600,
             modal:true,
-            drag:true,
-            resize:true,
-            closeOnEscape:true,
-            /*dataheight:150,*/
             recreateForm: true,
             checkOnUpdate : true,
             checkOnSubmit : true,
@@ -236,14 +217,10 @@ function pageInit(){
         },
         // options for the Add Dialog
         {
-            top:$(window).height()/2-200,
+            top:$(window).height()/2-130,
             left:$(window).width()/2-300,
             width:600,
             modal:true,
-            drag:true,
-            resize:true,
-            closeOnEscape:true,
-            /*dataheight:150,*/
             closeAfterAdd: true,
             reloadAfterSubmit:true,
             recreateForm: true,
@@ -277,6 +254,5 @@ function pageInit(){
     function afterCompleteFun(response,postdata) {
         var obj=jQuery.parseJSON(response.responseText);
         layer.msg(obj.msg, {time:1800});
-    };
-    $('#jqGrid').jqGrid('bindKeys');
+    }
 }

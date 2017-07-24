@@ -4,6 +4,9 @@ import com.jfinal.plugin.activerecord.Model;
 import com.link.common.util.DataGrid;
 import com.link.common.util.JqGrid;
 import com.link.common.util.ResultJson;
+import com.link.model.Channel;
+
+import java.util.List;
 
 /**
  * Created by linkzz on 2017-05-26.
@@ -29,4 +32,6 @@ public interface BaseServiceI {
      * @data: 2017-06-02 13:08
      */
     public ResultJson saveOrUpdate(Model model, String id, String table, JqGrid jqGrid);
+
+    public List<Channel> treeChannel();
 }

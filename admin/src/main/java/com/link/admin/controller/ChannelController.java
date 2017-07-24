@@ -7,6 +7,10 @@ import com.link.common.util.JqGrid;
 import com.link.core.ChannelServiceImpl;
 import com.link.model.Channel;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by linkzz on 2017-07-06.
  */
@@ -42,5 +46,16 @@ public class ChannelController extends Controller {
         Channel model = getModel(Channel.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         renderJson(channelService.saveOrUpdate(model,model.getId(),"t_channel",jqGrid));
+    }
+
+    public void treeChannel(){
+        List<Channel> list = channelService.treeChannel();
+        Map<String,String> map = new HashMap<String, String>();
+        if(list != null && list.size() > 0){
+            for (Channel channel : list){
+                map.put(channel.getId(),channel.getName());
+            }
+        }
+        renderJson(map);
     }
 }

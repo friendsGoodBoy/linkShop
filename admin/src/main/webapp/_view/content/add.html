@@ -26,16 +26,16 @@
             </select>
         </div>
         <div class="layui-form-mid layui-word-aux">
-            <label class="layui-form-label">排序</label>
+            <label class="layui-form-label" style="font-size: 14px; color: #0C0C0C">排序</label>
         </div>
         <div class="layui-form-mid layui-word-aux">
             <input type="text" name="model.sorter" required lay-verify="required" placeholder="排序" autocomplete="off" class="layui-input">
         </div>
         <div class="layui-form-mid layui-word-aux">
-            <label class="layui-form-label">浏览量</label>
+            <label class="layui-form-label" style="font-size: 14px; color: #0C0C0C">浏览量</label>
         </div>
         <div class="layui-form-mid layui-word-aux">
-            <input type="text" name="model.view" required lay-verify="required" placeholder="浏览量" autocomplete="off" class="layui-input">
+            <input type="text" name="model.view" placeholder="浏览量" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -51,7 +51,7 @@
             <input type="checkbox" name="model.italic" title="斜体">
         </div>
         <div class="layui-form-mid layui-word-aux">
-            <label class="layui-form-label">字体颜色</label>
+            <label class="layui-form-label" style="font-size: 14px; color: #0C0C0C">字体颜色</label>
         </div>
         <div class="layui-form-mid layui-word-aux" style="margin-top: -8px">
             <input type="text" name="model.color" placeholder="字体颜色" autocomplete="off" class="layui-input">
@@ -69,6 +69,18 @@
             <input type="checkbox" name="model.status" title="发布" checked>
             <input type="checkbox" name="model.hits" title="置顶">
             <input type="checkbox" name="model.good" title="推荐">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">封面图片</label>
+        <div class="layui-input-block">
+            <div class="site-demo-upload">
+                <img id="LAY_demo_upload" width="200" src="/layer/images/tong.jpg">
+                <div class="site-demo-upbar">
+                    <input type="file" name="file"class="layui-upload-file">
+                    <input id="imgUrl" type="hidden" name="model.img" value="">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -109,7 +121,7 @@
             }
         });
     });
-    layui.use(['form', 'layedit','laydate'], function(){
+    layui.use(['form','upload', 'layedit','laydate'], function(){
         var form = layui.form()
             ,$ = layui.jquery
             ,layer = layui.layer
@@ -124,6 +136,15 @@
         });
         //创建一个编辑器
         var editIndex = layedit.build('LAY_demo_editor');*/
+
+        layui.upload({
+            url: '#(ctx)/file/upload'
+            ,success: function(res){
+                LAY_demo_upload.src = res.url;
+                imgUrl.value=res.url;
+                layer.msg(res.url,{time:1800});
+            }
+        });
 
         //自定义验证规则
         form.verify({

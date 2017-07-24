@@ -11,6 +11,7 @@ import com.jfinal.plugin.activerecord.tx.Tx;
 import com.link.api.service.base.BaseServiceI;
 import com.link.common.kit.TreeKit;
 import com.link.common.util.*;
+import com.link.model.Channel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +59,13 @@ public class BaseServiceImpl implements BaseServiceI{
         }
         return result;
     }
+
+    @Override
+    public List<Channel> treeChannel() {
+        List<Channel> list = Channel.dao.find("select * from t_channel");
+        return list;
+    }
+
     /**
      * @Description: 通用的jqGrid查询
      * @author: linkzz

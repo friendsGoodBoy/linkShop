@@ -22,6 +22,23 @@ $.extend($.fn.fmatter, {
 function pageInit(){
     var jqGrid = "#jqGrid";
     var jqGridPager = "#jqGridPager";
+    $.ajax({
+        url : "channel/treeChannel",
+        type:'POST',
+        dataType : "json",
+        cache : false,
+        //是否异步发送
+        async : false,
+        success : function(data){
+            pnames = data;
+        },
+        error : function(textStatus, errorThrown) {
+            alert("系统ajax交互错误: " + textStatus);
+        }
+    });
+    var s = "";
+    for (k in pnames) s += ';' + k + ':' + pnames[k]; //转换为jqGrid select编辑需要的value值
+    s = s.substring(1); //去掉第一个;
     //创建jqGrid组件
     $(jqGrid).jqGrid({
         url: 'content/dataGrid',
@@ -50,6 +67,7 @@ function pageInit(){
                 label: '所属栏目',
                 name: 'cid',
                 width: 150,
+                formatter: function (v, opt, rec) { return pnames[v]; }, //将value转换为对应的text
                 editable:true
             },
             {
@@ -149,6 +167,12 @@ function pageInit(){
                 }
             },
             {
+                label: '创建时间',
+                name: 'createtime',
+                width: 150,
+                editable:true
+            },
+            {
                 name : '操作中心',
                 index : '',
                 width : 100,
@@ -167,7 +191,8 @@ function pageInit(){
         rowList:[10,20,30],
         viewrecords: true,
         sortable:true,
-        sortname:'id',
+        sortname:'createtime',
+        sord:'asc',
         multiselect:true,
         multiboxonly:true,
         multiselectWidth:20,

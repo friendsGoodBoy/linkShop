@@ -34,6 +34,7 @@ Table: t_content
  bold        | VARCHAR(10)   | YES  |     | 1       |         
  italic      | VARCHAR(10)   | YES  |     | 1       |         
  color       | VARCHAR(10)   | YES  |     | 1       |         
+ img         | VARCHAR(255)  | YES  |     |         |         
 -------------+---------------+------+-----+---------+---------
 
 Table: t_log
