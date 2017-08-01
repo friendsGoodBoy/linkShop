@@ -16,6 +16,7 @@
         <module>admin</module>
         <module>shop</module>
         <module>partner</module>
+        <module>webMagic</module>
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
