@@ -35,7 +35,6 @@ public class GithubRepoPageProcessor implements PageProcessor,AfterExtractor {
 
     public static void main(String[] args) {
 
-
         Spider.create(new GithubRepoPageProcessor()).addUrl("http://www.gslzcredit.gov.cn/65/").addPipeline(new JsonFilePipeline("D:\\data\\webmagic")).thread(5).run();
     }
 
