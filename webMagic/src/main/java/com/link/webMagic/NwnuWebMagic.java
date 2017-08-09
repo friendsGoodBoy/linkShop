@@ -10,9 +10,11 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.model.AfterExtractor;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
+import us.codecraft.webmagic.model.annotation.TargetUrl;
 
 import java.util.Set;
 
+@TargetUrl("http://www.jfinal.com/share/*")
 public class NwnuWebMagic extends Model<NwnuWebMagic> implements AfterExtractor {
 
     public Site site = Site.me().setRetryTimes(3).setSleepTime(0).setTimeOut(3000);
@@ -43,19 +45,19 @@ public class NwnuWebMagic extends Model<NwnuWebMagic> implements AfterExtractor 
     //使用 selenium 来模拟用户的登录获取cookie信息
     public void login(String username,String password) {
         WebDriver driver = new ChromeDriver();
-        driver.get("http://210.26.111.34/");
+        driver.get("http://www.jfinal.com/login?returnUrl=/");
 
-        driver.findElement(By.id("uCode")).clear();
+        driver.findElement(By.name("userName")).clear();
 
         //在******中填你的用户名
-        driver.findElement(By.id("uCode")).sendKeys(username);
+        driver.findElement(By.name("userName")).sendKeys(username);
 
-        driver.findElement(By.id("uPassword")).clear();
+        driver.findElement(By.name("password")).clear();
         //在*******填你密码
-        driver.findElement(By.id("uPassword")).sendKeys(password);
+        driver.findElement(By.name("password")).sendKeys(password);
 
         //模拟点击登录按钮
-        driver.findElement(By.id("login_btn")).click();
+        driver.findElement(By.className("SUBMIT")).click();
 
         //获取cookie信息
         cookies = driver.manage().getCookies();
