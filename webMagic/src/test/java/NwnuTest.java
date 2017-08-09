@@ -1,7 +1,6 @@
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.link.webMagic.NwnuWebMagic;
-import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.model.OOSpider;
 
 public class NwnuTest {
@@ -16,6 +15,9 @@ public class NwnuTest {
         arp.addMapping("t_blog",NwnuWebMagic.class);
         arp.start();
 
-        OOSpider.create(Site.me().setRetryTimes(3).setSleepTime(0).setTimeOut(3000),NwnuWebMagic.class).addUrl("http://www.jfinal.com/share/").run();
+        NwnuWebMagic nwnu = new NwnuWebMagic();
+        nwnu.login("linkzz@foxmail.com","zz201071040142");
+
+        OOSpider.create(nwnu.site,NwnuWebMagic.class).addUrl("http://www.jfinal.com/share/").run();
     }
 }
