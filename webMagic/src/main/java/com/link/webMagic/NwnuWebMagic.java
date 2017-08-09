@@ -18,7 +18,6 @@ import java.util.Set;
 public class NwnuWebMagic extends Model<NwnuWebMagic> implements AfterExtractor {
 
     public Site site = Site.me().setRetryTimes(3).setSleepTime(0).setTimeOut(3000);
-
     //用来存储cookie信息
     private Set<Cookie> cookies;
 
