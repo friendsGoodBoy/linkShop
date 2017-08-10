@@ -1,10 +1,9 @@
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
-import com.link.webMagic.NwnuWebMagic;
+import com.link.webMagic.ChsiWebMagic;
 import us.codecraft.webmagic.model.OOSpider;
 
-public class NwnuTest {
-
+public class ChsiTest {
     public static void main(String[] args){
         String url = "jdbc:mysql://localhost:3306/linkup?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull";
         String username = "root";
@@ -12,12 +11,12 @@ public class NwnuTest {
         DruidPlugin druidPlugin = new DruidPlugin(url,username,password);
         druidPlugin.start();
         ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
-        arp.addMapping("t_blog",NwnuWebMagic.class);
+        arp.addMapping("t_chsi",ChsiWebMagic.class);
         arp.start();
 
-        NwnuWebMagic nwnu = new NwnuWebMagic();
-        nwnu.login("********","*******");
+        ChsiWebMagic chsi = new ChsiWebMagic();
+        chsi.login("*********","********");
 
-        OOSpider.create(nwnu.getSite(),NwnuWebMagic.class).addUrl("http://www.jfinal.com/share/").run();
+        OOSpider.create(chsi.getSite(),ChsiWebMagic.class).addUrl("https://my.chsi.com.cn/archive/gdjy/xj/show.action").run();
     }
 }

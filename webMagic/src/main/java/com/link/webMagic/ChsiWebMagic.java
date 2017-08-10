@@ -1,5 +1,6 @@
 package com.link.webMagic;
 
+import com.jfinal.kit.LogKit;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Model;
 import org.openqa.selenium.By;
@@ -13,29 +14,30 @@ import us.codecraft.webmagic.model.annotation.ExtractBy;
 import us.codecraft.webmagic.model.annotation.TargetUrl;
 
 import java.util.Set;
-@TargetUrl("https://my.chsi.com.cn/archive/gdjy/xj/show.action/*")
+@TargetUrl("https://my.chsi.com.cn/archive/gdjy/xj/show.action")
 public class ChsiWebMagic extends Model<ChsiWebMagic> implements AfterExtractor {
-    public Site site = Site.me().setRetryTimes(3).setSleepTime(0).setTimeOut(3000);
+    public Site site = Site.me().setDomain("account.chsi.com.cn").setRetryTimes(3).setSleepTime(0).setTimeOut(3000);
     //用来存储cookie信息
     private Set<Cookie> cookies;
 
     //用ExtractBy注解的字段会被自动抽取并填充
 
     //默认是xpath语法
-    @ExtractBy(value = "h1.jf-article-title",type = ExtractBy.Type.Css)
-    private String title;
+    @ExtractBy(value = "//table[@class='mb-table']/tbody/tr[1]/td[1]/text()")
+    private String username;
 
     //可以定义抽取语法为Css、Regex等
-    @ExtractBy(value = "div.jf-article-content", type = ExtractBy.Type.Css)
-    private String content;
+    @ExtractBy(value = "//table[@class='mb-table']/tbody/tr[1]/td[2]/text()")
+    private String sex;
 
 
     @Override
     public void afterProcess(Page page) {
         //jfinal 的属性其实是一个map而不是字段，没关系，填充进去就是了
+        LogKit.info(page.getHtml().toString());
         this.set("id", StrKit.getRandomUUID());
-        this.set("title",title);
-        this.set("content",content);
+        this.set("username",username);
+        this.set("sex",sex);
         save();
     }
 
@@ -66,6 +68,7 @@ public class ChsiWebMagic extends Model<ChsiWebMagic> implements AfterExtractor 
         for (Cookie cookie : cookies) {
             site.addCookie(cookie.getName().toString(),cookie.getValue().toString());
         }
+
         return site.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1");
     }
 }
