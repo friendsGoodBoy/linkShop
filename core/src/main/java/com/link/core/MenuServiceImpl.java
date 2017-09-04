@@ -64,6 +64,12 @@ public class MenuServiceImpl extends BaseServiceImpl implements MenuServiceI {
     public ResultJson saveRoleMenu(String roleId, List<String> linkMenuId) {
         ResultJson resultJson = new ResultJson();
         try {
+            List<RoleMenu> roleMenus = RoleMenu.dao.find("select * from t_role_menu t where t.role_id = ?",roleId);
+            if (roleMenus != null && roleMenus.size() > 0){
+                for (RoleMenu rm : roleMenus){
+                    rm.delete();
+                }
+            }
             if (linkMenuId != null && linkMenuId.size() > 0){
                 for (String menuId : linkMenuId){
                     RoleMenu roleMenu = new RoleMenu();

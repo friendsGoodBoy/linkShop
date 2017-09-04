@@ -51,11 +51,11 @@ public class ContentController extends Controller {
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         if (jqGrid.getOper().equals(Constant.ADD)){
             User user = getSessionAttr("user");
-            model.setCreatetime(DateKit.toStr(new Date(),DateKit.timeFormat));
+            model.setCreatetime(DateKit.toStr(new Date(),DateKit.timeStampPattern));
             model.setAuthorId(user.getId());
             model.setAuthorName(user.getUsername());
         }else {
-            model.setModifytime(DateKit.toStr(new Date(),DateKit.timeFormat));
+            model.setModifytime(DateKit.toStr(new Date(),DateKit.timeStampPattern));
         }
         renderJson(contentService.saveOrUpdate(model,model.getId(),"t_content",jqGrid));
     }

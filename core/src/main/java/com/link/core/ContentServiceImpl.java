@@ -37,10 +37,10 @@ public class ContentServiceImpl extends BaseServiceImpl implements ContentServic
         try {
             if ("".equals(model.getId()) || model.getId() == null){
                 model.setId(StrKit.getRandomUUID());
-                model.setCreatetime(DateKit.toStr(new Date(),DateKit.timeFormat));
+                model.setCreatetime(DateKit.toStr(new Date(),DateKit.timeStampPattern));
                 model.save();
             } else {
-                model.setModifytime(DateKit.toStr(new Date(),DateKit.timeFormat));
+                model.setModifytime(DateKit.toStr(new Date(),DateKit.timeStampPattern));
                 model.update();
             }
             resultJson.setStatus(Constant.RESULT_SUCCESS);

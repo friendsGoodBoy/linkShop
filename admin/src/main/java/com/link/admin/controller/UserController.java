@@ -49,11 +49,11 @@ public class UserController extends Controller {
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         if (jqGrid.getOper().equals(Constant.ADD)){
             user.setPassword(HashKit.md5("111111"));
-            user.setCreateAt(DateKit.toStr(new Date(),DateKit.timeFormat));
+            user.setCreateAt(DateKit.toStr(new Date(),DateKit.timeStampPattern));
         }else if (jqGrid.getOper().equals(Constant.EDIT)){
-            user.setUpdateAt(DateKit.toStr(new Date(),DateKit.timeFormat));
+            user.setUpdateAt(DateKit.toStr(new Date(),DateKit.timeStampPattern));
         }else {
-            user.setDeleteAt(DateKit.toStr(new Date(),DateKit.timeFormat));
+            user.setDeleteAt(DateKit.toStr(new Date(),DateKit.timeStampPattern));
         }
         renderJson(userService.saveOrUpdate(user,user.getId(),"t_user",jqGrid));
     }

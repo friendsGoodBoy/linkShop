@@ -42,7 +42,7 @@ public class ExceptionAndLogInterceptor extends LogInterceptor {
             Log log = new Log();
             log.setId(StrKit.getRandomUUID());
             log.setActionkey(invocation.getActionKey());
-            log.setOpertime(DateKit.toStr(new Date(),DateKit.timeFormat));
+            log.setOpertime(DateKit.toStr(new Date(),DateKit.timeStampPattern));
             log.setUserid(user.getId());
             log.setUsername(user.getUsername());
             log.setIp(ConvertKit.getRemoteHost(request));

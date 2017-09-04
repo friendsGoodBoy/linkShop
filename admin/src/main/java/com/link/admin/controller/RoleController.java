@@ -51,11 +51,11 @@ public class RoleController extends Controller {
         Role model = getModel(Role.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
         if (jqGrid.getOper().equals(Constant.ADD)){
-            model.setCreatedAt(DateKit.toStr(new Date(),DateKit.timeFormat));
+            model.setCreatedAt(DateKit.toStr(new Date(),DateKit.timeStampPattern));
         }else if (jqGrid.getOper().equals(Constant.EDIT)){
-            model.setUpdatedAt(DateKit.toStr(new Date(),DateKit.timeFormat));
+            model.setUpdatedAt(DateKit.toStr(new Date(),DateKit.timeStampPattern));
         }else {
-            model.setDeletedAt(DateKit.toStr(new Date(),DateKit.timeFormat));
+            model.setDeletedAt(DateKit.toStr(new Date(),DateKit.timeStampPattern));
         }
         renderJson(roleService.saveOrUpdate(model,model.getId(),"t_role",jqGrid));
     }
