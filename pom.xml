@@ -17,12 +17,13 @@
         <module>shop</module>
         <module>partner</module>
         <module>webMagic</module>
+        <module>cbrc</module>
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit.version>4.12</junit.version>
-        <jfinal.version>3.1</jfinal.version>
+        <jfinal.version>3.2</jfinal.version>
         <jfinal.jetty.version>8.1.8</jfinal.jetty.version>
         <jfinal.cos.version>2017.5</jfinal.cos.version>
         <mysql.version>5.1.39</mysql.version>

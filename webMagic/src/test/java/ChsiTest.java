@@ -15,7 +15,7 @@ public class ChsiTest {
         arp.start();
 
         ChsiWebMagic chsi = new ChsiWebMagic();
-        chsi.login("*********","********");
+        chsi.login("muyi0623@163.com","22112991");
 
         OOSpider.create(chsi.getSite(),ChsiWebMagic.class).addUrl("https://my.chsi.com.cn/archive/gdjy/xj/show.action").run();
     }
