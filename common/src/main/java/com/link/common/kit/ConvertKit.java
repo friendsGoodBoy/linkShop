@@ -32,4 +32,20 @@ public class ConvertKit {
         }
         return ip.equals("0:0:0:0:0:0:0:1")?"127.0.0.1":ip;
     }
+
+    /**
+     * @Description: ip地址转换为long类型字符串
+     * @author: linkzz
+     * @data: 2017-09-13 10:42
+    */
+    public static long ipToLong(String ipAddress){
+        String[] ipAddressInArray = ipAddress.split("\\.");
+        long result = 0;
+        for (int i = 0; i < ipAddressInArray.length; i++){
+            int power = 3-i;
+            int ip = Integer.parseInt(ipAddressInArray[i]);
+            result += ip * Math.pow(256,power);
+        }
+        return result;
+    }
 }

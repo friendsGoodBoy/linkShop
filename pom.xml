@@ -18,6 +18,7 @@
         <module>partner</module>
         <module>webMagic</module>
         <module>cbrc</module>
+        <module>front</module>
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

@@ -10,6 +10,7 @@ import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.template.Engine;
+import com.jfinal.template.ext.directive.DateDirective;
 import com.link.cbrc.controller.IndexController;
 import com.link.common.kit.StrKit;
 import com.link.model._MappingKit;
@@ -24,6 +25,7 @@ public class CbrcConfig extends JFinalConfig{
     public void configConstant(Constants constants) {
         PropKit.use("config.properties");
         constants.setDevMode(PropKit.getBoolean("devMode",true));
+        constants.setError403View("/_view/403.html");
     }
 
     @Override
@@ -37,6 +39,7 @@ public class CbrcConfig extends JFinalConfig{
     public void configEngine(Engine me) {
         me.addSharedObject("host","http://localhost:8080");
         me.addSharedObject("sk",new StrKit());
+        me.addSharedObject("date",new DateDirective());
         me.addDirective("articlelist", new ArticleListDirective());
         me.addDirective("channelList", new ChannelListDirective());
     }
@@ -66,7 +69,8 @@ public class CbrcConfig extends JFinalConfig{
 
     @Override
     public void configInterceptor(Interceptors interceptors) {
-
+        //添加ip拦截器
+        //interceptors.addGlobalActionInterceptor(new IPInterceptor());
     }
 
     @Override

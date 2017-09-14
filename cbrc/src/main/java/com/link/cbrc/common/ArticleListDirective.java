@@ -38,7 +38,7 @@ public class ArticleListDirective extends Directive {
         //获取到的参数名和参数值 ，都在KV里面，该干啥干啥吧，这里省略了
         //根据上面得到的参数，自行组合SQL查询
         String select = "select * ";
-        String sqlExceptSelect = "FROM t_content t where t.cid = ?";
+        String sqlExceptSelect = "FROM t_content t where t.status = 'on' and t.cid = ?";
         Page<Content> page = Content.dao.paginate(kv.getInt("pagenumber"),kv.getInt("pagesize"),select,sqlExceptSelect,kv.getStr("cid"));
         List list=page.getList();
 

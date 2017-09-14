@@ -45,6 +45,7 @@ public class ChannelController extends Controller {
     public void saveOrUpdate(){
         Channel model = getModel(Channel.class,"",true);
         JqGrid jqGrid = getBean(JqGrid.class,"",true);
+        model.setLoaded("true");
         renderJson(channelService.saveOrUpdate(model,model.getId(),"t_channel",jqGrid));
     }
 

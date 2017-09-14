@@ -36,7 +36,16 @@ public class ChannelListDirective extends Directive {
         }
         //获取到的参数名和参数值 ，都在KV里面，该干啥干啥吧，这里省略了
         //根据上面得到的参数，自行组合SQL查询
-        List<Channel> list = Channel.dao.find("SELECT * FROM t_channel t WHERE t.type = 'true' AND t.hide = 'true' ORDER BY t.sorter");
+        String parent = kv.getStr("parent");
+        String sql = "SELECT * FROM t_channel t WHERE t.type = 'true' AND t.hide = 'true' ";
+        List<Channel> list = null;
+        if ("".equals(parent)){
+            sql = sql + "and t.parent is null ORDER BY t.sorter";
+            list = Channel.dao.find(sql);
+        }else {
+            sql = sql + "and t.parent = ? ORDER BY t.sorter";
+            list = Channel.dao.find(sql,kv.getStr("parent"));
+        }
 
         for (int i=0;i<list.size();i++) {
             scope.set("channel",list.get(i));

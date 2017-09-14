@@ -75,7 +75,7 @@ public class ContentServiceImpl extends BaseServiceImpl implements ContentServic
     @Override
     public Page<Content> findPage(String cid,int pages,int rows) {
         String select = "select *";
-        String sqlexcptSelect = "from t_content t where t.cid = ?";
+        String sqlexcptSelect = "from t_content t where t.status = 'on' and t.cid = ?";
         String order = " order by t.createtime desc";
         Page<Content> page = Content.dao.paginate(pages,rows,select,sqlexcptSelect + order,cid);
         return page;

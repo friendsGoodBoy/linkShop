@@ -76,6 +76,8 @@ function pageInit(){
                 width: 150,
                 editable:true,
                 edittype:"select",
+                stype: "select",
+                searchoptions: {value: ":[All];on:加粗;off:正常"},
                 editoptions:{
                     value:"on:加粗;off:正常"
                 },
@@ -92,6 +94,8 @@ function pageInit(){
                 width: 150,
                 editable:true,
                 edittype:"select",
+                stype: "select",
+                searchoptions: {value: ":[All];on:斜体;off:正常"},
                 editoptions:{
                     value:"on:斜体;off:正常"
                 },
@@ -121,13 +125,15 @@ function pageInit(){
                 width: 150,
                 editable:true,
                 edittype:"select",
+                stype: "select",
+                searchoptions: {value: ":[All];on:发布;off:未发布"},
                 editoptions:{
-                    value:"true:启用;false:关闭"
+                    value:"on:发布;off:未发布"
                 },
                 formatter:function (cellvalue,options,rowObject) {
-                    var temp = "启用";
+                    var temp = "发布";
                     if (cellvalue == "off"){
-                        temp = "关闭";
+                        temp = "未发布";
                     }
                     return temp;
                 }
@@ -138,8 +144,10 @@ function pageInit(){
                 width: 150,
                 editable:true,
                 edittype:"select",
+                stype: "select",
+                searchoptions: {value: ":[All];on:置顶;off:不置顶"},
                 editoptions:{
-                    value:"true:置顶;false:不置顶"
+                    value:"on:置顶;off:不置顶"
                 },
                 formatter:function (cellvalue,options,rowObject) {
                     var temp = "置顶";
@@ -155,8 +163,10 @@ function pageInit(){
                 width: 150,
                 editable:true,
                 edittype:"select",
+                stype: "select",
+                searchoptions: {value: ":[All];on:推荐;off:不推荐"},
                 editoptions:{
-                    value:"true:推荐;false:不推荐"
+                    value:"on:推荐;off:不推荐"
                 },
                 formatter:function (cellvalue,options,rowObject) {
                     var temp = "推荐";

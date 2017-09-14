@@ -14,7 +14,7 @@ public abstract class BaseRolePermission<M extends BaseRolePermission<M>> extend
 	}
 
 	public java.lang.String getId() {
-		return get("id");
+		return getStr("id");
 	}
 
 	public void setRoleId(java.lang.String roleId) {
@@ -22,7 +22,7 @@ public abstract class BaseRolePermission<M extends BaseRolePermission<M>> extend
 	}
 
 	public java.lang.String getRoleId() {
-		return get("role_id");
+		return getStr("role_id");
 	}
 
 	public void setPermissionId(java.lang.String permissionId) {
@@ -30,7 +30,7 @@ public abstract class BaseRolePermission<M extends BaseRolePermission<M>> extend
 	}
 
 	public java.lang.String getPermissionId() {
-		return get("permission_id");
+		return getStr("permission_id");
 	}
 
 }

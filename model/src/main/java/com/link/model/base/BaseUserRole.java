@@ -14,7 +14,7 @@ public abstract class BaseUserRole<M extends BaseUserRole<M>> extends Model<M> i
 	}
 
 	public java.lang.String getId() {
-		return get("id");
+		return getStr("id");
 	}
 
 	public void setUserId(java.lang.String userId) {
@@ -22,7 +22,7 @@ public abstract class BaseUserRole<M extends BaseUserRole<M>> extends Model<M> i
 	}
 
 	public java.lang.String getUserId() {
-		return get("user_id");
+		return getStr("user_id");
 	}
 
 	public void setRoleId(java.lang.String roleId) {
@@ -30,7 +30,7 @@ public abstract class BaseUserRole<M extends BaseUserRole<M>> extends Model<M> i
 	}
 
 	public java.lang.String getRoleId() {
-		return get("role_id");
+		return getStr("role_id");
 	}
 
 }

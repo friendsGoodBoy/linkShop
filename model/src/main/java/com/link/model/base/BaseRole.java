@@ -14,7 +14,7 @@ public abstract class BaseRole<M extends BaseRole<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getId() {
-		return get("id");
+		return getStr("id");
 	}
 
 	public void setName(java.lang.String name) {
@@ -22,7 +22,7 @@ public abstract class BaseRole<M extends BaseRole<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getName() {
-		return get("name");
+		return getStr("name");
 	}
 
 	public void setValue(java.lang.String value) {
@@ -30,7 +30,7 @@ public abstract class BaseRole<M extends BaseRole<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getValue() {
-		return get("value");
+		return getStr("value");
 	}
 
 	public void setIntro(java.lang.String intro) {
@@ -38,7 +38,7 @@ public abstract class BaseRole<M extends BaseRole<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getIntro() {
-		return get("intro");
+		return getStr("intro");
 	}
 
 	public void setPid(java.lang.String pid) {
@@ -46,7 +46,7 @@ public abstract class BaseRole<M extends BaseRole<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getPid() {
-		return get("pid");
+		return getStr("pid");
 	}
 
 	public void setCreatedAt(java.lang.String createdAt) {
@@ -54,7 +54,7 @@ public abstract class BaseRole<M extends BaseRole<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getCreatedAt() {
-		return get("created_at");
+		return getStr("created_at");
 	}
 
 	public void setUpdatedAt(java.lang.String updatedAt) {
@@ -62,7 +62,7 @@ public abstract class BaseRole<M extends BaseRole<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getUpdatedAt() {
-		return get("updated_at");
+		return getStr("updated_at");
 	}
 
 	public void setDeletedAt(java.lang.String deletedAt) {
@@ -70,7 +70,7 @@ public abstract class BaseRole<M extends BaseRole<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getDeletedAt() {
-		return get("deleted_at");
+		return getStr("deleted_at");
 	}
 
 }

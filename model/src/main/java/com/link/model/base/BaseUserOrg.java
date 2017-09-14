@@ -14,7 +14,7 @@ public abstract class BaseUserOrg<M extends BaseUserOrg<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getId() {
-		return get("id");
+		return getStr("id");
 	}
 
 	public void setUserId(java.lang.String userId) {
@@ -22,7 +22,7 @@ public abstract class BaseUserOrg<M extends BaseUserOrg<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getUserId() {
-		return get("user_id");
+		return getStr("user_id");
 	}
 
 	public void setOrgId(java.lang.Integer orgId) {
@@ -30,7 +30,7 @@ public abstract class BaseUserOrg<M extends BaseUserOrg<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getOrgId() {
-		return get("org_id");
+		return getInt("org_id");
 	}
 
 }

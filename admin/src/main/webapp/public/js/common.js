@@ -11,4 +11,14 @@ function openiframe(url) {
             content: url
         })
     );
+};
+
+function openiframepwd(url) {
+    layer.open({
+        type: 2,
+        maxmin: true,
+        area: ['420px', '240px'],
+        fixed: true, //不固定
+        content: url
+    })
 }

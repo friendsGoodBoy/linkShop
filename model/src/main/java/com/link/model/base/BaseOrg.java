@@ -14,7 +14,7 @@ public abstract class BaseOrg<M extends BaseOrg<M>> extends Model<M> implements 
 	}
 
 	public java.lang.Integer getId() {
-		return get("id");
+		return getInt("id");
 	}
 
 	public void setName(java.lang.String name) {
@@ -22,7 +22,7 @@ public abstract class BaseOrg<M extends BaseOrg<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getName() {
-		return get("name");
+		return getStr("name");
 	}
 
 	public void setComcode(java.lang.String comcode) {
@@ -30,7 +30,7 @@ public abstract class BaseOrg<M extends BaseOrg<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getComcode() {
-		return get("comcode");
+		return getStr("comcode");
 	}
 
 	public void setType(java.lang.String type) {
@@ -38,7 +38,7 @@ public abstract class BaseOrg<M extends BaseOrg<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getType() {
-		return get("type");
+		return getStr("type");
 	}
 
 	public void setSortno(java.lang.Integer sortno) {
@@ -46,7 +46,7 @@ public abstract class BaseOrg<M extends BaseOrg<M>> extends Model<M> implements 
 	}
 
 	public java.lang.Integer getSortno() {
-		return get("sortno");
+		return getInt("sortno");
 	}
 
 	public void setDesciption(java.lang.String desciption) {
@@ -54,7 +54,7 @@ public abstract class BaseOrg<M extends BaseOrg<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getDesciption() {
-		return get("desciption");
+		return getStr("desciption");
 	}
 
 	public void setStatus(java.lang.String status) {
@@ -62,7 +62,7 @@ public abstract class BaseOrg<M extends BaseOrg<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getStatus() {
-		return get("status");
+		return getStr("status");
 	}
 
 	public void setPid(java.lang.String pid) {
@@ -70,7 +70,7 @@ public abstract class BaseOrg<M extends BaseOrg<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getPid() {
-		return get("pid");
+		return getStr("pid");
 	}
 
 }

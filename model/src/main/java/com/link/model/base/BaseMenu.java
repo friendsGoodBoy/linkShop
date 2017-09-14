@@ -14,7 +14,7 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getId() {
-		return get("id");
+		return getStr("id");
 	}
 
 	public void setName(java.lang.String name) {
@@ -22,7 +22,7 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getName() {
-		return get("name");
+		return getStr("name");
 	}
 
 	public void setParent(java.lang.String parent) {
@@ -30,7 +30,7 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getParent() {
-		return get("parent");
+		return getStr("parent");
 	}
 
 	public void setDescription(java.lang.String description) {
@@ -38,7 +38,7 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getDescription() {
-		return get("description");
+		return getStr("description");
 	}
 
 	public void setPageurl(java.lang.String pageurl) {
@@ -46,7 +46,7 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getPageurl() {
-		return get("pageurl");
+		return getStr("pageurl");
 	}
 
 	public void setType(java.lang.String type) {
@@ -54,7 +54,7 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getType() {
-		return get("type");
+		return getStr("type");
 	}
 
 	public void setStatus(java.lang.String status) {
@@ -62,7 +62,7 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getStatus() {
-		return get("status");
+		return getStr("status");
 	}
 
 	public void setLoaded(java.lang.String loaded) {
@@ -70,7 +70,7 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getLoaded() {
-		return get("loaded");
+		return getStr("loaded");
 	}
 
 	public void setIcon(java.lang.String icon) {
@@ -78,7 +78,7 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getIcon() {
-		return get("icon");
+		return getStr("icon");
 	}
 
 }

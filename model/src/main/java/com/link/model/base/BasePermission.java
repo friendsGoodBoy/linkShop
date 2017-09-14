@@ -14,7 +14,7 @@ public abstract class BasePermission<M extends BasePermission<M>> extends Model<
 	}
 
 	public java.lang.String getId() {
-		return get("id");
+		return getStr("id");
 	}
 
 	public void setName(java.lang.String name) {
@@ -22,7 +22,7 @@ public abstract class BasePermission<M extends BasePermission<M>> extends Model<
 	}
 
 	public java.lang.String getName() {
-		return get("name");
+		return getStr("name");
 	}
 
 	public void setValue(java.lang.String value) {
@@ -30,7 +30,7 @@ public abstract class BasePermission<M extends BasePermission<M>> extends Model<
 	}
 
 	public java.lang.String getValue() {
-		return get("value");
+		return getStr("value");
 	}
 
 	public void setUrl(java.lang.String url) {
@@ -38,7 +38,7 @@ public abstract class BasePermission<M extends BasePermission<M>> extends Model<
 	}
 
 	public java.lang.String getUrl() {
-		return get("url");
+		return getStr("url");
 	}
 
 	public void setIntro(java.lang.String intro) {
@@ -46,7 +46,7 @@ public abstract class BasePermission<M extends BasePermission<M>> extends Model<
 	}
 
 	public java.lang.String getIntro() {
-		return get("intro");
+		return getStr("intro");
 	}
 
 	public void setParent(java.lang.String parent) {
@@ -54,7 +54,7 @@ public abstract class BasePermission<M extends BasePermission<M>> extends Model<
 	}
 
 	public java.lang.String getParent() {
-		return get("parent");
+		return getStr("parent");
 	}
 
 	public void setCreatedAt(java.lang.String createdAt) {
@@ -62,7 +62,7 @@ public abstract class BasePermission<M extends BasePermission<M>> extends Model<
 	}
 
 	public java.lang.String getCreatedAt() {
-		return get("created_at");
+		return getStr("created_at");
 	}
 
 	public void setUpdatedAt(java.lang.String updatedAt) {
@@ -70,7 +70,7 @@ public abstract class BasePermission<M extends BasePermission<M>> extends Model<
 	}
 
 	public java.lang.String getUpdatedAt() {
-		return get("updated_at");
+		return getStr("updated_at");
 	}
 
 	public void setDeletedAt(java.lang.String deletedAt) {
@@ -78,7 +78,7 @@ public abstract class BasePermission<M extends BasePermission<M>> extends Model<
 	}
 
 	public java.lang.String getDeletedAt() {
-		return get("deleted_at");
+		return getStr("deleted_at");
 	}
 
 	public void setLoaded(java.lang.String loaded) {
@@ -86,7 +86,7 @@ public abstract class BasePermission<M extends BasePermission<M>> extends Model<
 	}
 
 	public java.lang.String getLoaded() {
-		return get("loaded");
+		return getStr("loaded");
 	}
 
 }

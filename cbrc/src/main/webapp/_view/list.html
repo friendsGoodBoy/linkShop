@@ -2,58 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>中国银行业监督管理委员会-甘肃银监局</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="#(ctx)/layui/css/layui.css"  media="all">
-    <link rel="stylesheet" href="#(ctx)/public/css/common.css">
+    <link rel="stylesheet" type="text/css" href="#(ctx)/css/styles.css">
 </head>
 <body>
 #include("head.html")
-<div class="main" style="overflow: hidden;">
-    <div class="layui-row">
-        <div class="layui-row">
-            <div class="layui-col-xs4 layui-col-sm4 layui-col-md8">
-                <div class="layui-tab layui-tab-brief" style="margin:0 10px">
-                    <ul class="layui-tab-title">
-                        <li class="layui-this">#(channelname)</li>
-                    </ul>
-                    <div class="layui-tab-content">
-                        <div class="layui-tab-item layui-show">
-                            <ul>
-                                #for(article : page.list)
-                                    <li><span class="l"><a href="#(ctx)/detail/#(article.id)">#(sk.subString(article.title,45))</a></span><span class="r">#(sk.subString(article.createtime,10))</span></li>
-                                    #if(for.index%5==0)
-                                    <hr>
-                                    #end
-                                #end
-                            </ul>
-                            <div style="clear:both"></div>
-                            <div id="page"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
-                <div class="layui-tab layui-tab-brief" style="margin:0 10px">
-                    <ul class="layui-tab-title">
-                        <li class="layui-this">热门推荐</li>
-                    </ul>
-                    <div class="layui-tab-content">
-                        <div class="layui-tab-item layui-show">
-                            <ul>
-                                #articlelist(cid='c1b10bb1e6b144d498d4ff9e2dcfd4c1',pagenumber=1,pagesize=10)
-                                <li><span class="l"><a href="#(ctx)/detail/#(article.id)">#(sk.subString(article.title,16))</a></span><span class="r">#(sk.subString(article.createtime,10))</span></li>
-                                #end
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="part_one">
+    <div class="list_l">
+        <div class="list_l_tit">甘肃银监局</div>
+        <div class="aside_nav">
+            <dl>
+                <dt>
+                    <span class="dt_icon" id="dt_icon_1"></span>金融监管<span class="dt_arrow open"></span>
+                </dt>
+                <dd><a>书记谈责任</a></dd>
+                <dd><a>党建研究</a></dd>
+                <dd><a>党建动态</a></dd>
+                <dd><a>中心组学习</a></dd>
+                <dd><a>支部学习园地</a></dd>
+                <dd><a>党员风采</a></dd>
+                <dd><a>文明创建</a></dd>
+                <dd><a>工会之家</a></dd>
+                <dd><a>青春风采</a></dd>
+                <dd><a>先进典型</a></dd>
+                <dd><a>群众路线专栏</a></dd>
+            </dl>
+            <dl>
+                <dt>
+                    <span class="dt_icon" id="dt_icon_2"></span>年度重点工作<span class="dt_arrow"></span>
+                </dt>
+                <dd><a>书记谈责任</a></dd>
+                <dd><a>党建研究</a></dd>
+                <dd><a>党建动态</a></dd>
+                <dd><a>中心组学习</a></dd>
+                <dd><a>支部学习园地</a></dd>
+                <dd><a>党员风采</a></dd>
+                <dd><a>文明创建</a></dd>
+                <dd><a>工会之家</a></dd>
+                <dd><a>青春风采</a></dd>
+                <dd><a>先进典型</a></dd>
+                <dd><a>群众路线专栏</a></dd>
+            </dl>
+            <dl>
+                <dt>
+                    <span class="dt_icon" id="dt_icon_3"></span>视频会议日程<span class="dt_arrow"></span>
+                </dt>
+                <dd><a>书记谈责任</a></dd>
+                <dd><a>党建研究</a></dd>
+                <dd><a>党建动态</a></dd>
+                <dd><a>中心组学习</a></dd>
+                <dd><a>支部学习园地</a></dd>
+                <dd><a>党员风采</a></dd>
+                <dd><a>文明创建</a></dd>
+                <dd><a>工会之家</a></dd>
+                <dd><a>青春风采</a></dd>
+                <dd><a>先进典型</a></dd>
+                <dd><a>群众路线专栏</a></dd>
+            </dl>
+            <dl>
+                <dt>
+                    <span class="dt_icon" id="dt_icon_4"></span>金融监管专网<span class="dt_arrow"></span>
+                </dt>
+                <dd><a>书记谈责任</a></dd>
+                <dd><a>党建研究</a></dd>
+                <dd><a>党建动态</a></dd>
+                <dd><a>中心组学习</a></dd>
+                <dd><a>支部学习园地</a></dd>
+                <dd><a>党员风采</a></dd>
+                <dd><a>文明创建</a></dd>
+                <dd><a>工会之家</a></dd>
+                <dd><a>青春风采</a></dd>
+                <dd><a>先进典型</a></dd>
+                <dd><a>群众路线专栏</a></dd>
+            </dl>
+        </div>
+    </div>
+    <div class="list_r">
+        <div class="list_r_tit">
+            <span>当前位置：</span><a>#(channelname)</a> >
+        </div>
+        <div class="list_news">
+            <h2>二级标题</h2>
+            #for(article : page.list)
+            <a class="news_li" href="#(ctx)/detail/#(article.id)">
+                <span class="news_txt">#(sk.subString(article.title,45))</span>
+                <span class="news_date">#(sk.subString(article.createtime,10))</span>
+            </a>
+            #end
+
+            <div id="page"></div>
+
         </div>
     </div>
 </div>
+
 #include("foot.html")
 <script src="#(ctx)/layui/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->

@@ -14,7 +14,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getId() {
-		return get("id");
+		return getStr("id");
 	}
 
 	public void setCid(java.lang.String cid) {
@@ -22,7 +22,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getCid() {
-		return get("cid");
+		return getStr("cid");
 	}
 
 	public void setTitle(java.lang.String title) {
@@ -30,7 +30,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getTitle() {
-		return get("title");
+		return getStr("title");
 	}
 
 	public void setDescription(java.lang.String description) {
@@ -38,7 +38,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getDescription() {
-		return get("description");
+		return getStr("description");
 	}
 
 	public void setView(java.lang.Integer view) {
@@ -46,7 +46,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getView() {
-		return get("view");
+		return getInt("view");
 	}
 
 	public void setStatus(java.lang.String status) {
@@ -54,7 +54,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getStatus() {
-		return get("status");
+		return getStr("status");
 	}
 
 	public void setHits(java.lang.String hits) {
@@ -62,7 +62,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getHits() {
-		return get("hits");
+		return getStr("hits");
 	}
 
 	public void setGood(java.lang.String good) {
@@ -70,7 +70,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getGood() {
-		return get("good");
+		return getStr("good");
 	}
 
 	public void setCreatetime(java.lang.String createtime) {
@@ -78,7 +78,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getCreatetime() {
-		return get("createtime");
+		return getStr("createtime");
 	}
 
 	public void setModifytime(java.lang.String modifytime) {
@@ -86,7 +86,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getModifytime() {
-		return get("modifytime");
+		return getStr("modifytime");
 	}
 
 	public void setAuthorId(java.lang.String authorId) {
@@ -94,7 +94,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getAuthorId() {
-		return get("authorId");
+		return getStr("authorId");
 	}
 
 	public void setAuthorName(java.lang.String authorName) {
@@ -102,7 +102,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getAuthorName() {
-		return get("authorName");
+		return getStr("authorName");
 	}
 
 	public void setSorter(java.lang.Integer sorter) {
@@ -110,7 +110,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getSorter() {
-		return get("sorter");
+		return getInt("sorter");
 	}
 
 	public void setContent(java.lang.String content) {
@@ -118,7 +118,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getContent() {
-		return get("content");
+		return getStr("content");
 	}
 
 	public void setBold(java.lang.String bold) {
@@ -126,7 +126,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getBold() {
-		return get("bold");
+		return getStr("bold");
 	}
 
 	public void setItalic(java.lang.String italic) {
@@ -134,7 +134,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getItalic() {
-		return get("italic");
+		return getStr("italic");
 	}
 
 	public void setColor(java.lang.String color) {
@@ -142,7 +142,7 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getColor() {
-		return get("color");
+		return getStr("color");
 	}
 
 	public void setImg(java.lang.String img) {
@@ -150,7 +150,23 @@ public abstract class BaseContent<M extends BaseContent<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getImg() {
-		return get("img");
+		return getStr("img");
+	}
+
+	public void setStartip(java.lang.String startip) {
+		set("startip", startip);
+	}
+
+	public java.lang.String getStartip() {
+		return getStr("startip");
+	}
+
+	public void setEndip(java.lang.String endip) {
+		set("endip", endip);
+	}
+
+	public java.lang.String getEndip() {
+		return getStr("endip");
 	}
 
 }

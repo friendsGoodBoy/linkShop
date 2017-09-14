@@ -14,7 +14,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getId() {
-		return get("id");
+		return getStr("id");
 	}
 
 	public void setUsername(java.lang.String username) {
@@ -22,7 +22,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getUsername() {
-		return get("username");
+		return getStr("username");
 	}
 
 	public void setProvidername(java.lang.String providername) {
@@ -30,7 +30,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getProvidername() {
-		return get("providername");
+		return getStr("providername");
 	}
 
 	public void setEmail(java.lang.String email) {
@@ -38,7 +38,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getEmail() {
-		return get("email");
+		return getStr("email");
 	}
 
 	public void setPhone(java.lang.String phone) {
@@ -46,7 +46,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getPhone() {
-		return get("phone");
+		return getStr("phone");
 	}
 
 	public void setPassword(java.lang.String password) {
@@ -54,7 +54,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getPassword() {
-		return get("password");
+		return getStr("password");
 	}
 
 	public void setHasher(java.lang.String hasher) {
@@ -62,7 +62,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getHasher() {
-		return get("hasher");
+		return getStr("hasher");
 	}
 
 	public void setSalt(java.lang.String salt) {
@@ -70,7 +70,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getSalt() {
-		return get("salt");
+		return getStr("salt");
 	}
 
 	public void setAvatarUrl(java.lang.String avatarUrl) {
@@ -78,7 +78,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getAvatarUrl() {
-		return get("avatar_url");
+		return getStr("avatar_url");
 	}
 
 	public void setFirstName(java.lang.String firstName) {
@@ -86,7 +86,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getFirstName() {
-		return get("first_name");
+		return getStr("first_name");
 	}
 
 	public void setLastName(java.lang.String lastName) {
@@ -94,7 +94,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getLastName() {
-		return get("last_name");
+		return getStr("last_name");
 	}
 
 	public void setFullName(java.lang.String fullName) {
@@ -102,7 +102,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getFullName() {
-		return get("full_name");
+		return getStr("full_name");
 	}
 
 	public void setCreateAt(java.lang.String createAt) {
@@ -110,7 +110,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getCreateAt() {
-		return get("create_at");
+		return getStr("create_at");
 	}
 
 	public void setUpdateAt(java.lang.String updateAt) {
@@ -118,7 +118,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getUpdateAt() {
-		return get("update_at");
+		return getStr("update_at");
 	}
 
 	public void setDeleteAt(java.lang.String deleteAt) {
@@ -126,7 +126,7 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 	}
 
 	public java.lang.String getDeleteAt() {
-		return get("delete_at");
+		return getStr("delete_at");
 	}
 
 }

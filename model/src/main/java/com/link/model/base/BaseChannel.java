@@ -14,7 +14,7 @@ public abstract class BaseChannel<M extends BaseChannel<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getId() {
-		return get("id");
+		return getStr("id");
 	}
 
 	public void setName(java.lang.String name) {
@@ -22,15 +22,15 @@ public abstract class BaseChannel<M extends BaseChannel<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getName() {
-		return get("name");
+		return getStr("name");
 	}
 
-	public void setParent(java.lang.Integer parent) {
+	public void setParent(java.lang.String parent) {
 		set("parent", parent);
 	}
 
-	public java.lang.Integer getParent() {
-		return get("parent");
+	public java.lang.String getParent() {
+		return getStr("parent");
 	}
 
 	public void setUrl(java.lang.String url) {
@@ -38,7 +38,7 @@ public abstract class BaseChannel<M extends BaseChannel<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getUrl() {
-		return get("url");
+		return getStr("url");
 	}
 
 	public void setType(java.lang.String type) {
@@ -46,7 +46,7 @@ public abstract class BaseChannel<M extends BaseChannel<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getType() {
-		return get("type");
+		return getStr("type");
 	}
 
 	public void setHide(java.lang.String hide) {
@@ -54,7 +54,7 @@ public abstract class BaseChannel<M extends BaseChannel<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getHide() {
-		return get("hide");
+		return getStr("hide");
 	}
 
 	public void setSorter(java.lang.Integer sorter) {
@@ -62,7 +62,7 @@ public abstract class BaseChannel<M extends BaseChannel<M>> extends Model<M> imp
 	}
 
 	public java.lang.Integer getSorter() {
-		return get("sorter");
+		return getInt("sorter");
 	}
 
 	public void setTarget(java.lang.String target) {
@@ -70,7 +70,7 @@ public abstract class BaseChannel<M extends BaseChannel<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getTarget() {
-		return get("target");
+		return getStr("target");
 	}
 
 	public void setLoaded(java.lang.String loaded) {
@@ -78,7 +78,7 @@ public abstract class BaseChannel<M extends BaseChannel<M>> extends Model<M> imp
 	}
 
 	public java.lang.String getLoaded() {
-		return get("loaded");
+		return getStr("loaded");
 	}
 
 }

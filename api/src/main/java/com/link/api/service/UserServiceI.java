@@ -16,4 +16,5 @@ public interface UserServiceI extends BaseServiceI {
     public User getUser(String id);
 
     public User getUserByUserName(String userName);
+
 }

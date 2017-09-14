@@ -4,6 +4,8 @@ import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.link.api.service.ChannelServiceI;
 import com.link.api.service.ContentServiceI;
+import com.link.common.kit.ConvertKit;
+import com.link.common.kit.StrKit;
 import com.link.core.ChannelServiceImpl;
 import com.link.core.ContentServiceImpl;
 import com.link.model.Channel;
@@ -53,9 +55,23 @@ public class IndexController extends Controller {
     */
     public void detail(){
         Content content = contentService.getContentById(getPara());
-        Channel channel = channelService.getChannal(content.getCid());
-        setAttr("content",content);
-        setAttr("channelname",channel.getName());
-        render("/_view/detail.html");
+        long ip = ConvertKit.ipToLong(ConvertKit.getRemoteHost(getRequest()));
+        if (StrKit.notBlank(content.getStartip()) && StrKit.notBlank(content.getEndip())){
+            long startip = ConvertKit.ipToLong(content.getStartip());
+            long endip = ConvertKit.ipToLong(content.getEndip());
+            if (ip >= startip && ip <= endip){
+                Channel channel = channelService.getChannal(content.getCid());
+                setAttr("content",content);
+                setAttr("channelname",channel.getName());
+                render("/_view/detail.html");
+            }else {
+                renderError(403);
+            }
+        }else {
+            Channel channel = channelService.getChannal(content.getCid());
+            setAttr("content",content);
+            setAttr("channelname",channel.getName());
+            render("/_view/detail.html");
+        }
     }
 }

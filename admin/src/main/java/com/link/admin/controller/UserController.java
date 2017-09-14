@@ -6,6 +6,7 @@ import com.link.api.service.UserServiceI;
 import com.link.common.kit.DateKit;
 import com.link.common.util.Constant;
 import com.link.common.util.JqGrid;
+import com.link.common.util.ResultJson;
 import com.link.core.UserServiceImpl;
 import com.link.model.User;
 
@@ -88,6 +89,40 @@ public class UserController extends Controller {
      * @data: 2017-05-09 11:12
     */
     public void modifyPassword(){
-        render("user/modifyPassword.html");
+        User user = getSessionAttr("user");
+        setAttr("user",user);
+        render("modifyPassword.html");
+    }
+
+    /**
+     * @Description: 保存修改密码
+     * @author: linkzz
+     * @data: 2017-09-12 9:41
+    */
+    public void updatepwd(){
+        String oldpwd = getPara("user.oldpassword");
+        String newpwd = getPara("user.newpassword");
+        String repwd = getPara("user.repassword");
+        ResultJson resultJson = new ResultJson();
+        User user = getSessionAttr("user");
+        if (HashKit.md5(oldpwd).equals(user.getPassword())){
+            if (repwd.equals(newpwd)){
+                user.setPassword(HashKit.md5(newpwd));
+                try {
+                    user.update();
+                    resultJson.setMsg("密码修改成功！");
+                    resultJson.setStatus(Constant.RESULT_SUCCESS);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    resultJson.setMsg("密码修改失败！数据库操作失败！");
+                    resultJson.setStatus(Constant.RESULT_SQL_ERROR);
+                }
+
+            }else {
+                resultJson.setMsg("原密码错误！");
+                resultJson.setStatus(Constant.RESULT_LOGIN_ERROR_PWD);
+            }
+        }
+        renderJson(resultJson);
     }
 }

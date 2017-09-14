@@ -4,7 +4,7 @@ Table: t_channel
 --------+--------------+------+-----+---------+---------
  id     | VARCHAR(36)  | NO   | PRI |         | 主键      
  name   | VARCHAR(50)  | YES  |     |         | 名称      
- parent | INT(10)      | YES  |     |         | 父级id    
+ parent | VARCHAR(36)  | YES  |     |         | 父级id    
  url    | VARCHAR(255) | YES  |     |         | url地址   
  type   | VARCHAR(10)  | YES  |     | 1       |         
  hide   | VARCHAR(10)  | YES  |     | 0       |         
@@ -35,6 +35,8 @@ Table: t_content
  italic      | VARCHAR(10)   | YES  |     | 1       |         
  color       | VARCHAR(10)   | YES  |     | 1       |         
  img         | VARCHAR(255)  | YES  |     |         |         
+ startip     | VARCHAR(255)  | YES  |     |         |         
+ endip       | VARCHAR(255)  | YES  |     |         |         
 -------------+---------------+------+-----+---------+---------
 
 Table: t_log

@@ -14,7 +14,7 @@ public abstract class BaseLog<M extends BaseLog<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getId() {
-		return get("id");
+		return getStr("id");
 	}
 
 	public void setActionkey(java.lang.String actionkey) {
@@ -22,7 +22,7 @@ public abstract class BaseLog<M extends BaseLog<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getActionkey() {
-		return get("actionkey");
+		return getStr("actionkey");
 	}
 
 	public void setOpertime(java.lang.String opertime) {
@@ -30,7 +30,7 @@ public abstract class BaseLog<M extends BaseLog<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getOpertime() {
-		return get("opertime");
+		return getStr("opertime");
 	}
 
 	public void setIp(java.lang.String ip) {
@@ -38,7 +38,7 @@ public abstract class BaseLog<M extends BaseLog<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getIp() {
-		return get("ip");
+		return getStr("ip");
 	}
 
 	public void setUserid(java.lang.String userid) {
@@ -46,7 +46,7 @@ public abstract class BaseLog<M extends BaseLog<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getUserid() {
-		return get("userid");
+		return getStr("userid");
 	}
 
 	public void setUsername(java.lang.String username) {
@@ -54,7 +54,7 @@ public abstract class BaseLog<M extends BaseLog<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getUsername() {
-		return get("username");
+		return getStr("username");
 	}
 
 	public void setParams(java.lang.String params) {
@@ -62,7 +62,7 @@ public abstract class BaseLog<M extends BaseLog<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getParams() {
-		return get("params");
+		return getStr("params");
 	}
 
 	public void setResult(java.lang.String result) {
@@ -70,7 +70,7 @@ public abstract class BaseLog<M extends BaseLog<M>> extends Model<M> implements 
 	}
 
 	public java.lang.String getResult() {
-		return get("result");
+		return getStr("result");
 	}
 
 }
