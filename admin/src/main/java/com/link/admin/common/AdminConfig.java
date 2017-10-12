@@ -6,6 +6,7 @@ import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
+import com.jfinal.kit.LogKit;
 import com.jfinal.kit.PathKit;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -22,6 +23,9 @@ import com.link.common.plugin.shiro.ShiroInterceptor;
 import com.link.common.plugin.shiro.ShiroPlugin;
 import com.link.common.util.Constant;
 import com.link.model._MappingKit;
+import org.apache.log4j.PropertyConfigurator;
+
+import java.io.File;
 
 /**
  * Created by linkzz on 2017-05-25.
@@ -36,6 +40,12 @@ public class AdminConfig extends JFinalConfig {
     public void configConstant(Constants constants) {
         PropKit.use("config.properties");
         constants.setDevMode(PropKit.getBoolean("devMode",true));
+        //设置日志文件路径
+        String logFilePath = System.getProperty("catalina.base")+ File.separator+"linkshoplogs";
+        LogKit.info("日志输出路径："+logFilePath);
+        System.setProperty("logFilePath",logFilePath);
+        PropertyConfigurator.configure(System.getProperties());
+        //PropertyConfigurator.configure("config/log4j.properties");
         constants.setViewType(ViewType.JFINAL_TEMPLATE);
         constants.setError404View(Constant.error404path);
         constants.setError500View(Constant.error500path);

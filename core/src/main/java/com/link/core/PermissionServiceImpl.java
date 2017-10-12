@@ -31,7 +31,7 @@ public class PermissionServiceImpl extends BaseServiceImpl implements Permission
     @Override
     public List<String> findRolePermission(String roleId) {
         List<RolePermission> listRolePermission = RolePermission.dao.find("SELECT * FROM T_ROLE_PERMISSION T WHERE T.ROLE_ID = ?",roleId);
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         for (RolePermission rolePermission : listRolePermission){
             list.add(rolePermission.getPermissionId());
         }
@@ -40,11 +40,11 @@ public class PermissionServiceImpl extends BaseServiceImpl implements Permission
 
     @Override
     public List<String> urls(String userId) {
-        List<Permission> permissionList = Permission.dao.find("SELECT t.* FROM t_permission t \n" +
+        List<Permission> permissionList = Permission.dao.find("select t.* from t_permission t \n" +
                 "  inner join t_role_permission trp on t.id = trp.permission_id \n" +
-                "  INNER JOIN T_ROLE r ON trp.ROLE_ID = r.ID \n" +
-                "  INNER JOIN T_USER_ROLE TUR ON r.ID = TUR.ROLE_ID \n" +
-                "  INNER JOIN T_USER U ON TUR.USER_ID = U.ID WHERE U.ID = ?",userId);
+                "  inner join t_role r on trp.role_id = r.id \n" +
+                "  inner join t_user_role tur on r.id = tur.role_id \n" +
+                "  inner join t_user u on tur.user_id = u.id where u.id = ?",userId);
         List<String> list = new ArrayList<String>();
         for (Permission permission : permissionList){
             list.add(permission.getUrl());

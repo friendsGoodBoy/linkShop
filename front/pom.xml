@@ -14,13 +14,23 @@
         <dependency>
             <groupId>com.link</groupId>
             <artifactId>api</artifactId>
-            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.link</groupId>
             <artifactId>core</artifactId>
-            <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--<dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+        </dependency>-->
     </dependencies>
     <build>
         <finalName>front</finalName>

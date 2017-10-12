@@ -8,8 +8,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 /**
  * Created by linkzz on 2017-05-17.
  */
-public class
-SpringPlugin implements IPlugin {
+public class SpringPlugin implements IPlugin {
     private String[] configurations;
     private ApplicationContext ctx;
 

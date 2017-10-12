@@ -12,8 +12,6 @@
     <url>http://maven.apache.org</url>
     <properties>
         <jdoc.version>1.2</jdoc.version>
-        <model.version>1.0</model.version>
-        <common.version>1.0</common.version>
     </properties>
     <dependencies>
         <!-- JDoc文档生成 -->
@@ -27,32 +25,26 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.9</version>
         </dependency>
         <dependency>
             <groupId>freemarker</groupId>
             <artifactId>freemarker</artifactId>
-            <version>2.3.9</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.link</groupId>
             <artifactId>model</artifactId>
-            <version>${model.version}</version>
         </dependency>
         <dependency>
             <groupId>com.link</groupId>
             <artifactId>common</artifactId>
-            <version>${common.version}</version>
         </dependency>
     </dependencies>
     <build>

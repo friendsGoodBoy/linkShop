@@ -169,3 +169,15 @@ Table: t_user_role
  role_id | VARCHAR(32) | YES  |     |         |         
 ---------+-------------+------+-----+---------+---------
 
+Table: t_visitor_log
+-----------+--------------+------+-----+---------+---------
+ Field     | Type         | Null | Key | Default | Remarks 
+-----------+--------------+------+-----+---------+---------
+ id        | VARCHAR(36)  | NO   | PRI |         |         
+ actionkey | VARCHAR(100) | YES  |     |         | 控制器key  
+ ip        | VARCHAR(50)  | YES  |     |         |         
+ visittime | VARCHAR(50)  | YES  |     |         | 访问时间    
+ result    | TEXT(65535)  | YES  |     |         |         
+ params    | TEXT(65535)  | YES  |     |         |         
+-----------+--------------+------+-----+---------+---------
+

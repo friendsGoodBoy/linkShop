@@ -71,6 +71,7 @@ public class CbrcConfig extends JFinalConfig{
     public void configInterceptor(Interceptors interceptors) {
         //添加ip拦截器
         //interceptors.addGlobalActionInterceptor(new IPInterceptor());
+        interceptors.addGlobalActionInterceptor(new VisitLogInterceptor());
     }
 
     @Override
