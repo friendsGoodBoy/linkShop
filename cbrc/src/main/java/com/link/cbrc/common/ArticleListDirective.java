@@ -32,7 +32,6 @@ public class ArticleListDirective extends Directive {
         for (int i=0;i<exprArray.length;i++) {
             //循环参数列表，并把参数放到 Kv 里面
             Assign obj= (Assign)exprArray[i];
-            //System.out.println(obj.id+"   "+obj.right.eval(scope));
             kv.set(obj.getId().toLowerCase(), obj.eval(scope));
         }
         //获取到的参数名和参数值 ，都在KV里面，该干啥干啥吧，这里省略了

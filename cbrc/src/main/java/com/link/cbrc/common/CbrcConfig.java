@@ -42,6 +42,7 @@ public class CbrcConfig extends JFinalConfig{
         me.addSharedObject("date",new DateDirective());
         me.addDirective("articlelist", new ArticleListDirective());
         me.addDirective("channelList", new ChannelListDirective());
+        me.addDirective("picList",new PicListDirective());
     }
 
     @Override

@@ -11,8 +11,6 @@ import com.link.core.ContentServiceImpl;
 import com.link.model.Channel;
 import com.link.model.Content;
 
-import java.util.List;
-
 /**
  * Created by linkzz on 2017-08-30.
  */
@@ -26,8 +24,8 @@ public class IndexController extends Controller {
      * @data: 2017-08-30 16:05
     */
     public void index(){
-        List<Content> newspic = contentService.findContentList("c1b10bb1e6b144d498d4ff9e2dcfd4c1",true,5,"asc");
-        setAttr("newpics",newspic);
+       /* List<Content> noticePic = contentService.findContentList("c1b10bb1e6b144d498d4ff9e2dcfd4c1",true,2,"asc");
+        setAttr("noticePic",noticePic);*/
         render("/_view/layout.html");
     }
 

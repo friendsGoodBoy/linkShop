@@ -28,7 +28,7 @@
                 <div class="ad_slide">
                     <div class="Slide" id="slide">
                         <ul class="slide-cont">
-                            #for(pic : newpics)
+                            #picList(cid='c1b10bb1e6b144d498d4ff9e2dcfd4c1',pagenumber=1,pagesize=8)
                             <li class="slide-item">
                                 <a href="#(ctx)/detail/#(pic.id)" title="" target="blank"> <img src="#(host)#(pic.img)"> </a>
                                 <div class="slide-txt">
@@ -268,7 +268,7 @@
             <a class="buttons prev"></a>
             <div class="viewport">
                 <ul class="overview">
-                    #for(pic : newpics)
+                    #picList(cid='c1b10bb1e6b144d498d4ff9e2dcfd4c1',pagenumber=1,pagesize=8)
                     <!--<div><a href="#(ctx)/detail/#(pic.id)"><img width="100%" src="#(host)#(pic.img)"></a></div>-->
                     <li><a href="javascript:void(0)"><img width="100%" src="#(host)#(pic.img)" /></a></li>
                     #end

@@ -27,8 +27,15 @@
 <div class="important_notice" id="notice">
     <div class="notice_tit">重要通知<a class="close_btn"></a></div>
     <div class="notice_info">
-        <p><img src="#(ctx)/images/notice_img.jpg" title=""></p>
-        <p>关于公布甘肃银监单位考核标准2017年4月机室考察考核标准实施关于申报甘肃五一劳动奖章的通知施</p>
+        #picList(cid='c1b10bb1e6b144d498d4ff9e2dcfd4c1',pagenumber=1,pagesize=2)
+        <a href="#(ctx)/detail/#(pic.id)" title="" target="blank">
+            #if(!sk.isBlank(pic.img))
+                <p><img src="#(host)#(pic.img)" width="166" height="75" title=""></p>
+            #end
+            <p>#(pic.title)</p>
+        </a>
+        #end
+
     </div>
 </div>
 
