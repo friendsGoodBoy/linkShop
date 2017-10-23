@@ -48,6 +48,7 @@ public class ArticleListDirective extends Directive {
         }
     }
 
+    @Override
     public boolean hasEnd(){
         return true;
     }

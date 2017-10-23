@@ -31,6 +31,7 @@ public class ExceptionAndLogInterceptor extends LogInterceptor {
             this.pattern = caseSensitive?Pattern.compile(regex):Pattern.compile(regex, 2);
         }
     }
+    @Override
     public void intercept(Invocation invocation){
         invocation.invoke();
         if(this.pattern.matcher(invocation.getActionKey()).matches()) {

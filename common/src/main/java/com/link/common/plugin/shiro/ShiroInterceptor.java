@@ -23,7 +23,8 @@ import org.apache.shiro.authz.UnauthenticatedException;
 
 public class ShiroInterceptor implements Interceptor {
 
-	public void intercept(Invocation ai) {
+	@Override
+    public void intercept(Invocation ai) {
 		AuthzHandler ah = ShiroKit.getAuthzHandler(ai.getActionKey());
 		// 存在访问控制处理器。
 		if (ah != null) {
@@ -35,7 +36,7 @@ public class ShiroInterceptor implements Interceptor {
 				// 如果没有进行身份验证，返回HTTP401状态码,或者跳转到默认登录页面
 				if(StrKit.notBlank(ShiroKit.getLoginUrl())){
 					//保存登录前的页面信息,只保存GET请求。其他请求不处理。
-					if(ai.getController().getRequest().getMethod().equalsIgnoreCase("GET")){
+					if("GET".equalsIgnoreCase(ai.getController().getRequest().getMethod())){
 						ai.getController().setSessionAttr(ShiroKit.getSavedRequestKey(), ai.getActionKey());
 					}
 					ai.getController().redirect(ShiroKit.getLoginUrl());

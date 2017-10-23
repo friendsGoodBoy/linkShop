@@ -138,6 +138,7 @@ public class FileController extends Controller {
     }
 
     public class NameComparator implements Comparator {
+        @Override
         public int compare(Object a, Object b) {
             Hashtable hashA = (Hashtable) a;
             Hashtable hashB = (Hashtable) b;
@@ -152,6 +153,7 @@ public class FileController extends Controller {
     }
 
     public class SizeComparator implements Comparator {
+        @Override
         public int compare(Object a, Object b) {
             Hashtable hashA = (Hashtable) a;
             Hashtable hashB = (Hashtable) b;
@@ -172,6 +174,7 @@ public class FileController extends Controller {
     }
 
     public class TypeComparator implements Comparator {
+        @Override
         public int compare(Object a, Object b) {
             Hashtable hashA = (Hashtable) a;
             Hashtable hashB = (Hashtable) b;

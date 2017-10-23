@@ -68,8 +68,9 @@ public class TreeKit{
     public List<Record> findChildAtNode(Record currentNode){
         List<Record> childs = new ArrayList<>();
         for (Record n : list){
-            if (n == currentNode)
+            if (n == currentNode) {
                 continue;
+            }
             if (currentNode.get("id").equals(n.get("parent"))){
                 childs.add(n);
             }

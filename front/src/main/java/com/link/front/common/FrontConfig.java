@@ -29,7 +29,7 @@ public class FrontConfig extends JFinalConfig {
     public void configRoute(Routes me) {
         me.add("/", IndexController.class);
         me.add(new FrontRoutes());
-        this.routes = me;
+        FrontConfig.routes = me;
     }
 
     @Override

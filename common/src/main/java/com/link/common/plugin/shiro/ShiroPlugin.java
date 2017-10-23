@@ -81,6 +81,7 @@ public class ShiroPlugin implements IPlugin {
     /**
      * 停止插件
      */
+    @Override
     public boolean stop() {
         return true;
     }
@@ -88,6 +89,7 @@ public class ShiroPlugin implements IPlugin {
     /**
      * 启动插件
      */
+    @Override
     public boolean start() {
         Set<String> excludedMethodName = buildExcludedMethodName();
         ConcurrentMap<String, AuthzHandler> authzMaps = new ConcurrentHashMap<String, AuthzHandler>();
@@ -143,8 +145,9 @@ public class ShiroPlugin implements IPlugin {
         Set<String> excludedMethodName = new HashSet<String>();
         Method[] methods = Controller.class.getMethods();
         for (Method m : methods) {
-            if (m.getParameterTypes().length == 0)
+            if (m.getParameterTypes().length == 0) {
                 excludedMethodName.add(m.getName());
+            }
         }
         return excludedMethodName;
     }
@@ -235,11 +238,13 @@ public class ShiroPlugin implements IPlugin {
         ActionKey ak = method.getAnnotation(ActionKey.class);
         if (ak != null) {
             actionKey = ak.value().trim();
-            if ("".equals(actionKey))
+            if ("".equals(actionKey)) {
                 throw new IllegalArgumentException(controllerClass.getName() + "." + methodName + "(): The argument of ActionKey can not be blank.");
-            if (!actionKey.startsWith(SLASH))
+            }
+            if (!actionKey.startsWith(SLASH)) {
                 actionKey = SLASH + actionKey;
-        } else if (methodName.equals("index")) {
+            }
+        } else if ("index".equals(methodName)) {
             actionKey = controllerKey;
         } else {
             actionKey = controllerKey.equals(SLASH) ? SLASH + methodName : controllerKey + SLASH + methodName;

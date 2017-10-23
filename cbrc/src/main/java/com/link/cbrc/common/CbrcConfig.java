@@ -32,7 +32,7 @@ public class CbrcConfig extends JFinalConfig{
     public void configRoute(Routes me) {
         me.add("/", IndexController.class);
         me.add(new CbrcRoutes());
-        this.routes = me;
+        CbrcConfig.routes = me;
     }
 
     @Override

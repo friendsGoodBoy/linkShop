@@ -28,8 +28,11 @@ import org.apache.log4j.PropertyConfigurator;
 import java.io.File;
 
 /**
- * Created by linkzz on 2017-05-25.
- */
+ * @ClassName: AdminConfig
+ * @Description: 后台管理Config
+ * @author: linkzz
+ * @data: 2017-10-16 9:49
+*/
 public class AdminConfig extends JFinalConfig {
     private static Routes routes;
 
@@ -57,7 +60,7 @@ public class AdminConfig extends JFinalConfig {
     public void configRoute(Routes me) {
         me.add("/", IndexController.class);
         me.add(new AdminRoutes());
-        this.routes = me;
+        AdminConfig.routes = me;
     }
 
     @Override
@@ -90,7 +93,7 @@ public class AdminConfig extends JFinalConfig {
         _MappingKit.mapping(arp);
         me.add(arp);
         //加载shiroPlugin插件
-        ShiroPlugin shiroPlugin = new ShiroPlugin(this.routes);
+        ShiroPlugin shiroPlugin = new ShiroPlugin(AdminConfig.routes);
         shiroPlugin.setUnauthorizedUrl(Constant.error401path);
         me.add(shiroPlugin);
         /*Cron4jPlugin cron4jPlugin = new Cron4jPlugin();

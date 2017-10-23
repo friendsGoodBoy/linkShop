@@ -44,6 +44,7 @@ public class ChannelListDirective extends Directive {
         }
     }
 
+    @Override
     public boolean hasEnd(){
         return true;
     }

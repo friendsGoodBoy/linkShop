@@ -12,7 +12,13 @@ public class ConvertKit {
      * @author: linkzz
      * @data: 2017-06-14 15:15
     */
-    public static int convert(boolean value){ if(value) return 1; else return 0;}
+    public static int convert(boolean value){
+        if(value) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 
     /**
      * @Description: 获取IP地址
@@ -30,7 +36,7 @@ public class ConvertKit {
         if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)){
             ip = request.getRemoteAddr();
         }
-        return ip.equals("0:0:0:0:0:0:0:1")?"127.0.0.1":ip;
+        return "0:0:0:0:0:0:0:1".equals(ip) ?"127.0.0.1":ip;
     }
 
     /**
